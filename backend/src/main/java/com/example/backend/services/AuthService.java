@@ -1,6 +1,8 @@
 package com.example.backend.services;
 
+import com.example.backend.dtos.RegistrationDTO;
 import com.example.backend.model.auth.Account;
+import com.example.backend.model.auth.Gender;
 import com.example.backend.model.auth.User;
 import com.example.backend.repositories.AccountRepository;
 import com.example.backend.repositories.RoleRepository;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import javax.servlet.http.Cookie;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Service
@@ -31,19 +34,30 @@ public class AuthService {
         this.accountRepository = accountRepository;
     }
 
-    public Account register(String name, String surname, String email, String password) {
+    public Account register(RegistrationDTO dto) {
 
         User user = new User();
-        user.setEmail(email);
-        user.setPassword(password);
+        user.setEmail(dto.getEmail());
+        user.setPassword(dto.getPassword());
         user.setRole(roleRepository.getById(1L));
 
         Account account = new Account();
-        account.setName(name);
-        account.setSurname(surname);
+        account.setName(dto.getName());
+        account.setSurname(dto.getSurname());
+        account.setBirthdate(LocalDate.parse(dto.getBirthdate().split("T")[0]));
+        account.setGender(getGender(dto.getGender()));
+        account.setPhoneNumber(dto.getPhoneNumber());
         account.setUser(user);
 
         return accountRepository.save(account);
+    }
+
+    private Gender getGender(String gender) {
+        return switch (gender)  {
+            case "FEMALE" -> Gender.FEMALE;
+            case "MALE" -> Gender.MALE;
+            default -> Gender.OTHER;
+        };
     }
 
     public User findUser(String email, String password) {
@@ -109,6 +123,7 @@ public class AuthService {
     private Date generateExpirationDate() {
         return new Date(System.currentTimeMillis() + 1000 * 60 * 30);
     }
+
 
 
 }
