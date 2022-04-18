@@ -17,8 +17,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component'; 
+import { HttpRequestInterceptor } from './interceptors/HttpRequestInterceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { HomeComponent } from './components/home/home.component';
     MatSnackBarModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

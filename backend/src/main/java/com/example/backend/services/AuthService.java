@@ -51,39 +51,49 @@ public class AuthService {
     }
 
 
-    public Cookie login(String email, String password) {
-
+    public Cookie[] login(String email, String password) {
         User user = userRepository.findByEmailAndPassword(email, password);
-
         if (user == null)
             return null;
+        return getCookies(user);
+    }
 
+    private Cookie[] getCookies(User user) {
         String token = generateToken(user.getEmail(), user.getRole().getName());
+        return new Cookie[] {
+                getRoleCookie(user.getRole().getName()),
+                getTokenCookie(token)
+        };
+    }
 
-        return getCookie(token);
+    private Cookie getTokenCookie(String token) {
+        Cookie cookie = new Cookie("token", token);
+        cookie.setHttpOnly(true);
+        return getGoodCookie(cookie);
+    }
+
+    private Cookie getRoleCookie(String role) {
+        Cookie cookie = new Cookie("role", role);
+        cookie.setHttpOnly(false);
+        return getGoodCookie(cookie);
+    }
+
+    private Cookie getGoodCookie(Cookie cookie) {
+        cookie.setMaxAge(24 * 60 * 60);
+        cookie.setPath("/");
+        return cookie;
     }
 
     public Cookie logout() {
         return getBadCookie();
     }
 
-
-    private Cookie getCookie(String token) {
-        Cookie tokenCookie = new Cookie("token", token);
-        tokenCookie.setMaxAge(24 * 60 * 60);
-        tokenCookie.setPath("/");
-        tokenCookie.setHttpOnly(true);
-        return tokenCookie;
-    }
-
     private Cookie getBadCookie() {
         Cookie tokenCookie = new Cookie("token", null);
         tokenCookie.setMaxAge(0);
         tokenCookie.setPath("/");
-
         return tokenCookie;
     }
-
 
     private String generateToken(String email, String role) {
         return Jwts.builder()
@@ -97,7 +107,7 @@ public class AuthService {
     }
 
     private Date generateExpirationDate() {
-        return new Date(new Date().getTime() + 1000 * 60 * 30);
+        return new Date(System.currentTimeMillis() + 1000 * 60 * 30);
     }
 
 
