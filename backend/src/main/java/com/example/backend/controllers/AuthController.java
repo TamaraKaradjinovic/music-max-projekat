@@ -1,0 +1,56 @@
+package com.example.backend.controllers;
+
+import com.example.backend.dtos.LoginDTO;
+import com.example.backend.dtos.RegistrationDTO;
+import com.example.backend.model.auth.Account;
+import com.example.backend.model.auth.User;
+import com.example.backend.services.AuthService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@RequestMapping(value = "/auth")
+public class AuthController {
+
+
+    @Autowired
+    AuthService authService;
+
+    @PostMapping("/register")
+    public ResponseEntity register(@RequestBody RegistrationDTO dto) {
+        Account acc = authService.register(dto.getName(), dto.getSurname(), dto.getEmail(), dto.getPassword());
+        return new ResponseEntity<>(
+                HttpStatus.CREATED
+        );
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody LoginDTO dto, HttpServletResponse response) {
+
+        User user = authService.findUser(dto.getEmail(), dto.getPassword());
+
+        if (user == null)
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+
+        response.addCookie(authService.login(dto.getEmail(), dto.getPassword()));
+
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity logout(HttpServletResponse response) {
+
+        response.addCookie(authService.logout());
+
+        return ResponseEntity.ok().build();
+    }
+
+}
