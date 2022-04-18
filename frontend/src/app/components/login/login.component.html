@@ -1,0 +1,27 @@
+<div class="big-container">
+    <mat-card class="container">
+      <mat-card-title> Log in: </mat-card-title>
+      <mat-card-content>
+        <br><br>
+        <div class="content">
+          <form class="example-form" #f="ngForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pam@example.com" name="email" [(ngModel)]="model.email" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your password</mat-label>
+              <input matInput type="password" name="password" [(ngModel)]="model.password" required>
+            </mat-form-field>
+            <br> <a [routerLink]=" '../registration' "> Don't have account? Click here to register! </a>
+            <br><br><br>
+            <button mat-flat-button color="primary" class="confirm" (click)="login()">
+              Confirm
+            </button>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

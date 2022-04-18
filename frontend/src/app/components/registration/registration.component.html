@@ -1,0 +1,63 @@
+<div class="big-container">
+  <mat-card class="container">
+    <mat-card-title> Registration: </mat-card-title><br>
+    <mat-card-content>
+      <br><br>
+      <form class="example-form">
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your name</mat-label>
+          <input matInput placeholder="Pam" [(ngModel)]="model.name" name="name" required>
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your surname</mat-label>
+          <input matInput placeholder="Smith" [(ngModel)]="model.surname" name="surname" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Birthdate</mat-label>
+          <input matInput [matDatepicker]="$any(picker)" [matDatepickerFilter]="filterYounger"  [(ngModel)]="model.birthdate" name="birthdate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [startAt]="getMinDate()"></mat-datepicker>
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field appearance="standard">
+          <mat-label>Select your gender: </mat-label>
+          <mat-select [(ngModel)]="model.gender"  name="gender">
+            <mat-option value="MALE">Male</mat-option>
+            <mat-option value="FEMALE">Female</mat-option>
+            <mat-option value="OTHER">Other</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pam@example.com" [(ngModel)]="model.email"  name="email" required>
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field appearance="standard" >
+          <mat-label>Telephone</mat-label>
+          <span matPrefix>+381 &nbsp;</span>
+          <input type="tel" matInput placeholder="64-123-4567"  [(ngModel)]="model.phoneNumber"  name="phoneNumber" >
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your password</mat-label>
+          <input matInput type="password"  [(ngModel)]="model.password"  name="password" required>
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field appearance="standard">
+          <mat-label>Reenter your password</mat-label>
+          <input matInput type="password"   [(ngModel)]="password2"  name="password2" required >
+        </mat-form-field>
+        <br><br><br>
+
+        <button mat-flat-button color="primary" class="confirm" (click)="register()">
+          Confirm
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

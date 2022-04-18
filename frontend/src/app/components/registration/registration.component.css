@@ -1,0 +1,15 @@
+.container {
+  min-height: 450px;
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.big-container {
+  padding: 5% 28%;
+  background-color: #d5d8dc;
+}
+
+.confirm {
+  align-self: flex-end;
+}
