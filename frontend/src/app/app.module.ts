@@ -13,7 +13,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button'; 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule } from '@angular/forms';
@@ -41,8 +40,7 @@ import { HttpRequestInterceptor } from './interceptors/HttpRequestInterceptor';
     MatDatepickerModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatNativeDateModule,
-    MatButtonModule
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
