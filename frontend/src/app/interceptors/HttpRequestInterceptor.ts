@@ -43,6 +43,19 @@ import {
         });
   
         return of(err.message);
+      } else if (err.status == 404) {
+        this.router.navigate(['/login']);
+  
+        let msg = 'User does not exist!';
+  
+        this._snackBar.open(msg, 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['snackbar'],
+        });
+  
+        return of(err.message);
       } else if (err.status == 500) {
         let msg = 'Internal server error. Please try again!';
   
