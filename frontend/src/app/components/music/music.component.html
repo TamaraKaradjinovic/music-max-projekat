@@ -1,0 +1,43 @@
+<div class="container">
+    <h3>Filter: </h3>
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Search for singer:</mat-label>
+            <input type="text" placeholder="Pick one" aria-label="Number" matInput [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+            </mat-autocomplete>
+        </mat-form-field>
+
+        &nbsp;&nbsp;
+
+        <mat-form-field appearance="fill">
+            <mat-label>Genre: </mat-label>
+            <mat-select multiple>
+                <mat-select-trigger>
+                </mat-select-trigger>
+            </mat-select>
+        </mat-form-field>
+
+        &nbsp;&nbsp;
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Start date">
+                <input matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/YYYY – MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <button mat-flat-button class="confirm accent-color text-primary-color">
+            Filter
+        </button>
+
+        <mat-divider></mat-divider>
+    </form>
+</div>

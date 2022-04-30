@@ -1,0 +1,25 @@
+#meni {
+    width: 100%;
+    color: bisque;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(25, 36, 36);
+}
+
+#right {
+    width: 50%;
+    text-align: end;
+}
+
+
+button {
+    font-size: large;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#img {
+    width: 30px;
+    height: 30px;
+}

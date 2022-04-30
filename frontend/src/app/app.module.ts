@@ -13,7 +13,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button'; 
+import { MatMenuModule } from '@angular/material/menu'; 
+import { MatToolbarModule}  from '@angular/material/toolbar'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
+import { MatDividerModule } from '@angular/material/divider'; 
+import { MatSliderModule } from '@angular/material/slider'; 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule } from '@angular/forms';
@@ -21,13 +26,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component'; 
 import { HttpRequestInterceptor } from './interceptors/HttpRequestInterceptor';
+import { MenuComponent } from './components/menu/menu.component';
+import { MusicComponent } from './components/music/music.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    HomeComponent
+    HomeComponent,
+    MenuComponent,
+    MusicComponent
   ],
   imports: [
     BrowserModule,
@@ -37,12 +46,17 @@ import { HttpRequestInterceptor } from './interceptors/HttpRequestInterceptor';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
     MatSelectModule,
     MatSnackBarModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatMenuModule,
+    MatToolbarModule,
+    MatAutocompleteModule, 
+    MatDividerModule,
+    MatSliderModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }

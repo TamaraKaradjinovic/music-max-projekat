@@ -1,0 +1,33 @@
+<div id="meni" color="primary">
+
+  <mat-toolbar class="default-primary-color text-primary-color">
+    <div id="left">
+      <span>Max Music</span>
+
+      <img src="/assets/cd-xxl.png" id="img">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+
+      <button mat-button>Home</button>
+
+      <button mat-button [matMenuTriggerFor]="musicMenu">Music</button>
+      <mat-menu #musicMenu="matMenu" yPosition="below" xPosition="after">
+        <button mat-menu-item>Pop</button>
+        <button mat-menu-item>Rock</button>
+        <button mat-menu-item>Jazz</button>
+        <button mat-menu-item routerLink="/music">All</button>
+      </mat-menu>
+
+      <button mat-button routerLink="/forum">Forum</button>
+
+      <button mat-button routerLink="/admin">Admin</button>
+
+    </div>
+    <div id="right">
+      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/registration">Register</button>
+    </div>
+
+  </mat-toolbar>
+
+
+</div>
