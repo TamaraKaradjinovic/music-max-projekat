@@ -19,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
 import { MatDividerModule } from '@angular/material/divider'; 
 import { MatSliderModule } from '@angular/material/slider'; 
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule } from '@angular/forms';
@@ -28,6 +30,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpRequestInterceptor } from './interceptors/HttpRequestInterceptor';
 import { MenuComponent } from './components/menu/menu.component';
 import { MusicComponent } from './components/music/music.component';
+import { ForumComponent } from './components/forum/forum.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { MusicComponent } from './components/music/music.component';
     RegistrationComponent,
     HomeComponent,
     MenuComponent,
-    MusicComponent
+    MusicComponent,
+    ForumComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,8 @@ import { MusicComponent } from './components/music/music.component';
     MatAutocompleteModule, 
     MatDividerModule,
     MatSliderModule,
+    MatTabsModule,
+    MatButtonToggleModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }

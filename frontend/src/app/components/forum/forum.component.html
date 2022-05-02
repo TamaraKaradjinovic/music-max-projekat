@@ -1,0 +1,48 @@
+<mat-tab-group headerPosition="above" >
+ 
+
+    <mat-tab label="Start a topic" layout="row" layout-align="center center">
+      <div class="mat-card-content">
+        <mat-card class="topic-card">
+          <mat-card-title-group>
+            <li>
+              <mat-form-field appearance="fill">
+                <mat-label>Start a new topic</mat-label>
+                <input matInput [(ngModel)]="topic">
+              </mat-form-field>
+            </li>
+            <button mat-raised-button type="submit" color="primary">POST</button>
+          </mat-card-title-group>
+          <mat-card-content>
+            {{topic}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+    </mat-tab>
+
+  <mat-tab label="Read interesting topics">
+
+    <div class="mat-card-content">
+      <mat-card class="topic-card">
+    <form class="topic-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Topic</mat-label>
+        <input matInput placeholder="topic" value="{{topic}}">
+      </mat-form-field>
+    
+      <mat-form-field class="topic-full-width" appearance="fill">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" color="primary">ANSWER</button>
+    </form>
+   
+    </mat-card>
+    </div>
+   
+  </mat-tab>
+  
+</mat-tab-group>
