@@ -2,21 +2,23 @@
 
 
   <mat-tab label="Start a topic">
-    <div class="mat-card-content">
+    <div class="mat-card-content tabs">
       <mat-card class="topic-card">
 
         <mat-card-title>
           Start new topic
         </mat-card-title>
 
-        <mat-card-content class="content">
-          <mat-form-field appearance="fill">
-            <mat-label>Enter topic name</mat-label>
-            <input matInput [(ngModel)]="topic">
-          </mat-form-field><br>
+        <mat-card-content class="content1">
+          <form (ngSubmit)=postNewTopic()>
+            <mat-form-field appearance="fill" class="field-half">
+              <mat-label>Enter topic name</mat-label>
+              <input matInput [(ngModel)]="newTopic" name="newTopic">
+            </mat-form-field><br>
 
-          <button mat-raised-button type="submit" color="primary"> Add </button>
-          {{topic}}
+            <button mat-raised-button type="submit" color="primary"> Add </button>
+            {{newTopic}}
+          </form>
         </mat-card-content>
 
       </mat-card>
@@ -27,29 +29,52 @@
 
   <mat-tab label="Read interesting topics">
 
-    <mat-card class="topic-card">
+    <mat-card class="topic-card tabs">
 
       <mat-card-title>
         Choose topic
       </mat-card-title>
 
-      <mat-card-content class="content">
+      <mat-card-content class="content2">
         <form>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="field-half">
             <mat-label> Topic: </mat-label>
-            <mat-select [(ngModel)]="topic" name="topic">
+            <mat-select [(ngModel)]="selectedTopic" name="selectedTopic" (ngModelChange)="getPosts()">
               <mat-option *ngFor="let t of topics" [value]="t"> {{t}} </mat-option>
             </mat-select>
           </mat-form-field><br>
 
-          <button mat-raised-button type="submit" color="primary"> Submit </button>
-
         </form>
+
+
+        <div *ngIf="selectedTopic != undefined" >
+
+          <br>
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+          <br>
+          <h2> {{selectedTopic}} </h2>
+          <br>
+          <br>
+          <mat-card *ngFor="let p of posts" class="comment">
+            <mat-card-subtitle>
+              {{p.userEmail}} :
+            </mat-card-subtitle>
+            <mat-card-content>
+              {{p.comment}}
+            </mat-card-content>
+          </mat-card>
+          <br>
+          <br>
+          <br>
+        </div>
+
       </mat-card-content>
 
     </mat-card>
- 
+
   </mat-tab>
 
 </mat-tab-group>

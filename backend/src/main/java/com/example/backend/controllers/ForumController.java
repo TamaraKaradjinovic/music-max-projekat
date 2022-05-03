@@ -35,9 +35,10 @@ public class ForumController {
     }
 
     @GetMapping("/topic/{name}")
-    public TopicDto getTopic(@PathVariable String name) {
+    public List<PostDto> getTopic(@PathVariable String name) {
         Topic topic = forumService.getTopic(name);
-        return getTopicDto(topic);
+        System.out.println(topic +"  " + name);
+        return getTopicDto(topic).getPosts();
     }
 
     @PostMapping("/post/{name}")

@@ -16,7 +16,30 @@
   width: 100%;
 }
 
-.content {
+.content1 {
+  width: 500px;
   padding: 20px;
   padding-top: 30px;
+}
+
+.content2 {
+  width: 1050px;
+  padding: 20px;
+  padding-top: 30px;
+}
+
+.comment {
+  width: auto;
+  padding: 50px;
+  margin: 10px;
+}
+
+.tabs {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.field-half {
+  min-width: 50%;
+  max-width: max-content;
 }

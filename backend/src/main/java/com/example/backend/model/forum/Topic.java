@@ -23,6 +23,6 @@ public class Topic {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "topic")
     private List<Post> posts;
 }

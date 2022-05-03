@@ -40,7 +40,8 @@ import { ForumComponent } from './components/forum/forum.component';
     HomeComponent,
     MenuComponent,
     MusicComponent,
-    ForumComponent
+    ForumComponent,
+    
   ],
   imports: [
     BrowserModule,

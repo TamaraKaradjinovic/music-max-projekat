@@ -22,6 +22,7 @@ public class Post {
     private String comment;
 
     @ManyToOne
+    @JoinColumn(name = "topic_id")
     private Topic topic;
 
     @ManyToOne
