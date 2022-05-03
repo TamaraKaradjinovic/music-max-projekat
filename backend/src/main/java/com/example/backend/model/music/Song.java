@@ -20,14 +20,11 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(nullable = false)
     private int year;
-
-    @ManyToOne
-    private Period period;
 
     @ManyToOne
     private Genre genre;
@@ -42,9 +39,15 @@ public class Song {
     private List<Singer> singers;
 
     @Lob
+    @Column
     private byte[] audio;
 
     @Lob
+    @Column
     private byte[] video;
-    
+
+    @Lob
+    @Column
+    private byte[] albumCover;
+
 }

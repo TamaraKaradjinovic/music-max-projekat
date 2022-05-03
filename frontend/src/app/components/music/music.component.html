@@ -11,16 +11,6 @@
         &nbsp;&nbsp;
 
         <mat-form-field appearance="fill">
-            <mat-label>Genre: </mat-label>
-            <mat-select multiple>
-                <mat-select-trigger>
-                </mat-select-trigger>
-            </mat-select>
-        </mat-form-field>
-
-        &nbsp;&nbsp;
-
-        <mat-form-field appearance="fill">
             <mat-label>Enter a date range</mat-label>
             <mat-date-range-input [rangePicker]="picker">
                 <input matStartDate placeholder="Start date">
@@ -31,7 +21,6 @@
             <mat-date-range-picker #picker></mat-date-range-picker>
         </mat-form-field>
 
-
         &nbsp;&nbsp;&nbsp;&nbsp;
 
         <button mat-flat-button class="confirm accent-color text-primary-color">
@@ -41,3 +30,21 @@
         <mat-divider></mat-divider>
     </form>
 </div>
+
+
+
+
+<!-- list of songs
+    dodati endpoint
+    <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+-->
+
+<mat-card class="songs-container" style="display: grid; grid-template-columns: 25% 25% 25% 25%;">
+    <div class="card-content" *ngFor="let song of songs; index as i" style="margin: 20px auto;">
+        <app-song [song]="song"></app-song>
+    </div>
+</mat-card>

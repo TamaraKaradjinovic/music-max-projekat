@@ -1,3 +1,19 @@
 .container {
     margin: 30px;
 }
+
+.song-container {
+    white-space: initial;
+    display: flex;
+    align-content: flex-start;
+}
+
+.card {
+    width: 320px;
+    background-color: whitesmoke;
+}
+
+
+.card-content-item {
+    padding: 5px;
+}

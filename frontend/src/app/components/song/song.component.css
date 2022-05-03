@@ -1,0 +1,38 @@
+.song {
+    margin: 20px auto;
+    width: 320px;
+    background-color: whitesmoke;
+}
+
+
+.wrapper {
+    overflow: hidden;
+}
+
+.wrapper div {
+    padding: 20px;
+}
+
+#one {
+    float: left;
+    margin-right: 20px;
+    width: 300px;
+    overflow: hidden;
+    border-width: 2px;
+    border: #000;
+}
+
+#one img {
+    width: 150px;
+    height: 150px;
+}
+
+@media screen and (max-width: 100px) {
+    #one {
+        float: none;
+        margin-right: 0;
+        width: auto;
+        border: 0;
+        border-bottom: 2px solid #000;
+    }
+}

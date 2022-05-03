@@ -1,0 +1,17 @@
+<mat-card class="song" style="display: grid; grid-template-columns: 50% 50%;">
+    <div>
+        <mat-card-title>{{song.name}}</mat-card-title>
+        <mat-card-subtitle>
+            {{this.song.singers[0]}}
+        </mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-button>Open</button>
+        </mat-card-actions>
+    </div>
+    <div class="wrapper">
+        <div id="one">
+            <img class="image" src="data:image/jpeg;base64,{{song.albumCover}}">
+        </div>
+    </div>
+
+</mat-card>
