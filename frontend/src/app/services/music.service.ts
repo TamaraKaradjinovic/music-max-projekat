@@ -21,6 +21,7 @@ httpOptions.headers.append('Content-Type', 'application/x-www-form-urlencoded; c
 export class MusicService {
 
 
+
   private readonly url = 'http://localhost:9000/music-max/music';
 
   constructor(
@@ -38,7 +39,7 @@ export class MusicService {
     );
   }
 
-  getSingers() {
+  getAllSingers() {
     return this.http.get<string[]>(
       this.url + '/singers', {
       headers: {

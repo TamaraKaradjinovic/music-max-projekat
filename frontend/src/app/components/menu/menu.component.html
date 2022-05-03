@@ -11,9 +11,9 @@
 
       <button mat-button [matMenuTriggerFor]="musicMenu">Music</button>
       <mat-menu #musicMenu="matMenu" yPosition="below" xPosition="after">
-        <button mat-menu-item>Pop</button>
-        <button mat-menu-item>Rock</button>
-        <button mat-menu-item>Jazz</button>
+        <button mat-menu-item *ngFor="let genre of genres; index as i" routerLink="/music/{{i}}">
+          {{genre}}
+        </button>
         <button mat-menu-item routerLink="/music">All</button>
       </mat-menu>
 

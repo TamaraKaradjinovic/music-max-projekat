@@ -1,8 +1,13 @@
-<<<<<<< HEAD
 INSERT INTO `role` (name)
 VALUES ('guest');
 
 INSERT INTO user(email, password, role_id) VALUES ('pam@mail.com', '0123456', 1);
+INSERT INTO user(email, password, role_id) VALUES ('pera@mail.com', '0123456', 1);
+
+
+INSERT INTO topic(name) VALUES ('New Metallica album');
+INSERT INTO topic(name) VALUES ('New Antrax song');
+
 
 INSERT INTO singer(stage_name) VALUES ('Metallica');
 INSERT INTO singer(stage_name) VALUES ('Lady Gaga');
@@ -28,23 +33,16 @@ INSERT INTO song(name, year, genre_id, user_id, album_cover)
 VALUES ('Six', 1973, 4, 2, LOAD_FILE('/home/tijanajanjic/Documents/PMF/8. semestar/PRIS/music-max/backend/src/main/resources/Metallica_-_One_cover.jpg'));
 INSERT INTO song(name, year, genre_id, user_id, album_cover)
 VALUES ('Seven', 1973, 4, 2, LOAD_FILE('/home/tijanajanjic/Documents/PMF/8. semestar/PRIS/music-max/backend/src/main/resources/Metallica_-_One_cover.jpg'));
-
-
+INSERT INTO song(name, year, genre_id, user_id, album_cover)
+VALUES ('Eight', 1973, 2, 2, LOAD_FILE('/home/tijanajanjic/Documents/PMF/8. semestar/PRIS/music-max/backend/src/main/resources/Metallica_-_One_cover.jpg'));
 
 INSERT INTO song_singers(song_id, singers_id) VALUES (10,1);
 INSERT INTO song_singers(song_id, singers_id) VALUES (11,1);
-INSERT INTO song_singers(song_id, singers_id) VALUES (12,1);
-INSERT INTO song_singers(song_id, singers_id) VALUES (13,1);
-INSERT INTO song_singers(song_id, singers_id) VALUES (14,1);
-INSERT INTO song_singers(song_id, singers_id) VALUES (15,1);
-INSERT INTO song_singers(song_id, singers_id) VALUES (16,1);
-||||||| 9219dab
-INSERT INTO `role` (name)
-VALUES ('guest');
-=======
-INSERT INTO role (name) VALUES ('guest');
-INSERT INTO user(email, password, role_id) VALUES ('pam@mail.com', '0123456', 1);
-
+INSERT INTO song_singers(song_id, singers_id) VALUES (5,1);
+INSERT INTO song_singers(song_id, singers_id) VALUES (6,1);
+INSERT INTO song_singers(song_id, singers_id) VALUES (7,1);
+INSERT INTO song_singers(song_id, singers_id) VALUES (8,1);
+INSERT INTO song_singers(song_id, singers_id) VALUES (9,1);
 
 INSERT INTO topic(name) VALUES ('New Metallica album');
 INSERT INTO topic(name) VALUES ('New Antrax song');
@@ -52,4 +50,4 @@ INSERT INTO topic(name) VALUES ('New Antrax song');
 INSERT INTO post(comment, topic_id, user_id) VALUES ('lalallal', 1, 1);
 INSERT INTO post(comment, topic_id, user_id) VALUES ('rararra', 1, 1);
 INSERT INTO post(comment, topic_id, user_id) VALUES ('nanannan', 1, 1);
->>>>>>> tamara
+

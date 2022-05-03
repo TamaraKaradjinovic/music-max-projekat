@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MusicService } from 'src/app/services/music.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: MusicService) { }
 
+  genres: string[] = []
+  
   ngOnInit(): void {
+
+    this.service.getAllGenres().subscribe(
+      (res) => {
+        console.log('genres found')
+        this.genres = res
+        console.log(this.genres)
+
+      }
+    );
   }
+
+  
 
 }

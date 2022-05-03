@@ -40,7 +40,7 @@ public class MusicController {
 
     @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
     @GetMapping("/singers")
-    public List<Singer> getAllSingers(){
-        return musicService.getAllSingers();
+    public List<String> getAllSingers(){
+        return musicService.getAllSingers().stream().map(Singer::getStageName).collect(Collectors.toList());
     }
 }
