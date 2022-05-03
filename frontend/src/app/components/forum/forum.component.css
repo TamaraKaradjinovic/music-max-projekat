@@ -1,0 +1,45 @@
+.topic-card {
+  margin: auto;
+  width: fit-content;
+  border: 1px solid rgb(36, 71, 130);
+  padding: 30px;
+}
+
+.topic-form {
+  margin: auto;
+  width: 50%;
+  border: 1px solid rgb(36, 71, 130);
+  padding: 10px;
+}
+
+.topic-full-width {
+  width: 100%;
+}
+
+.content1 {
+  width: 500px;
+  padding: 20px;
+  padding-top: 30px;
+}
+
+.content2 {
+  width: 1050px;
+  padding: 20px;
+  padding-top: 30px;
+}
+
+.comment {
+  width: auto;
+  padding: 50px;
+  margin: 10px;
+}
+
+.tabs {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.field-half {
+  min-width: 50%;
+  max-width: max-content;
+}
