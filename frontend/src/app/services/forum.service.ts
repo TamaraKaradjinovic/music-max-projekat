@@ -6,8 +6,10 @@ import { Post } from '../model/post';
 @Injectable({
   providedIn: 'root'
 })
-export class ForumService { 
+export class ForumService {
+ 
   private readonly url = 'http://localhost:9000/music-max/forum';
+  
 
   constructor(
     private http: HttpClient,
@@ -33,4 +35,14 @@ export class ForumService {
       ' '
     );
   }
+
+  postComment(topic: string, comment: string, userEmail: string) {
+   return this.http.post<Post>(
+      this.url + '/post/' + topic+ '',
+      {
+        comment: comment,
+        userEmail: userEmail
+      }
+    );
+  } 
 }

@@ -68,7 +68,17 @@
           </mat-card>
           <br>
           <br>
+          <form (ngSubmit)=postNewComment()>
+          <mat-form-field class="field-half" appearance="fill" >
+            <mat-label>Leave a comment</mat-label>
+            <textarea matInput [(ngModel)]="comment" name="comment"></textarea>
+            
+          </mat-form-field>
           <br>
+          <button mat-raised-button type="submit" color="primary"> Post </button>
+        
+          <br>
+        </form>
         </div>
 
       </mat-card-content>
