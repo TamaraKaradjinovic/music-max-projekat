@@ -10,12 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class ForumComponent implements OnInit {
 
   constructor() { }
-
-  topic : string | undefined;
+  
+  topics: string[] = ['topic1', 'topic2']
+  topic! : string
 
   ngOnInit(): void {
   }
 
-  post(){}
+  post(){
+
+  }
 
 }

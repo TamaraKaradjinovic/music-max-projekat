@@ -1,17 +1,22 @@
 .topic-card {
   margin: auto;
+  width: fit-content;
+  border: 1px solid rgb(36, 71, 130);
+  padding: 30px;
+}
+
+.topic-form {
+  margin: auto;
   width: 50%;
   border: 1px solid rgb(36, 71, 130);
   padding: 10px;
-  }
+}
 
-  .topic-form {
-    margin: auto;
-  width: 50%;
-  border: 1px solid  rgb(36, 71, 130);
-  padding: 10px;
-  }
-  
-  .topic-full-width {
-    width: 100%;
-  }
+.topic-full-width {
+  width: 100%;
+}
+
+.content {
+  padding: 20px;
+  padding-top: 30px;
+}

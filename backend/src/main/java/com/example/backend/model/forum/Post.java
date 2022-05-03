@@ -1,6 +1,5 @@
 package com.example.backend.model.forum;
 
-
 import com.example.backend.model.auth.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,21 +7,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class Topic {
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String comment;
 
-    @OneToMany
-    private List<Post> posts;
+    @ManyToOne
+    private Topic topic;
+
+    @ManyToOne
+    private User user;
+
+
 }
+
