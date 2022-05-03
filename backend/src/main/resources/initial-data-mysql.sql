@@ -1,13 +1,7 @@
-INSERT INTO `role` (name)
-VALUES ('guest');
+INSERT INTO role (name) VALUES ('guest');
 
 INSERT INTO user(email, password, role_id) VALUES ('pam@mail.com', '0123456', 1);
 INSERT INTO user(email, password, role_id) VALUES ('pera@mail.com', '0123456', 1);
-
-
-INSERT INTO topic(name) VALUES ('New Metallica album');
-INSERT INTO topic(name) VALUES ('New Antrax song');
-
 
 INSERT INTO singer(stage_name) VALUES ('Metallica');
 INSERT INTO singer(stage_name) VALUES ('Lady Gaga');

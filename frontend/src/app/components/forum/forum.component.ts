@@ -16,6 +16,7 @@ export class ForumComponent implements OnInit {
   topics!: string[]
   newTopic!: string
   selectedTopic: string | undefined
+  comment!: string;
 
   posts: Post[] = []
 
@@ -38,7 +39,7 @@ export class ForumComponent implements OnInit {
   }
 
   postNewComment() {
-    this.service.getAllTopics().subscribe(
+    this.service.postComment(this.selectedTopic!, this.comment, "email").subscribe(
       (res) => {
         console.log("dodato!")
       }
