@@ -20,7 +20,10 @@ export class MusicComponent implements OnInit {
   yearS: number = 0
   yearE: number = 2022
 
-  singer: string = ''
+  singer: string | undefined = undefined
+
+  hasAudio: boolean = false
+  hasVideo: boolean = false
 
   constructor(private service: MusicService, private router: Router) { }
 
@@ -77,14 +80,15 @@ export class MusicComponent implements OnInit {
     console.log(this.songs)
     this.songs = this.allsongs.filter(
       x => {
-        console.log(x.singers.indexOf(this.singer))
-        console.log(x.singers)
-        console.log(this.singer)
+        console.log(this.singer
+        )
 
         return (
           x.year >= this.yearS && x.year <= this.yearE
-          && (x.singers.indexOf(this.singer) != -1)
-        ) 
+          && ((typeof this.singer === "undefined") || x.singers.indexOf(this.singer!) != -1)
+          && (this.hasAudio != (typeof x.audio === "undefined"))
+          && (this.hasVideo != (typeof x.video === "undefined"))
+        )
       }
     )
   }
