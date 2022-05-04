@@ -1,7 +1,7 @@
 <mat-tab-group headerPosition="above">
 
 
-  <mat-tab label="Start a topic">
+  <mat-tab label="Start a topic" *ngIf="guestLogged()" >
     <div class="mat-card-content tabs">
       <mat-card class="topic-card">
 
@@ -16,8 +16,8 @@
               <input matInput [(ngModel)]="newTopic" name="newTopic">
             </mat-form-field><br>
 
-            <button mat-raised-button type="submit" color="primary"> Add </button>
-            {{newTopic}}
+            <button mat-raised-button type="submit" class="accent-color text-primary-color"> Add </button>
+
           </form>
         </mat-card-content>
 
@@ -49,7 +49,6 @@
 
 
         <div *ngIf="selectedTopic != undefined" >
-
           <br>
           <br>
           <mat-divider></mat-divider>
@@ -58,6 +57,9 @@
           <h2> {{selectedTopic}} </h2>
           <br>
           <br>
+
+          <i *ngIf="posts.length == 0"> There's no posts on this topic yet! </i>
+
           <mat-card *ngFor="let p of posts" class="comment">
             <mat-card-subtitle>
               {{p.userEmail}} :
@@ -68,14 +70,17 @@
           </mat-card>
           <br>
           <br>
-          <form (ngSubmit)=postNewComment()>
+
+          <form *ngIf="guestLogged()" (ngSubmit)=postNewComment()>
           <mat-form-field class="field-half" appearance="fill" >
             <mat-label>Leave a comment</mat-label>
             <textarea matInput [(ngModel)]="comment" name="comment"></textarea>
             
           </mat-form-field>
           <br>
-          <button mat-raised-button type="submit" color="primary"> Post </button>
+          <br>
+
+          <button mat-raised-button type="submit"  class="accent-color text-primary-color"> Post </button>
         
           <br>
         </form>

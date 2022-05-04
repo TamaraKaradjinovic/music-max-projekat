@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/model/post';
+import { AuthService } from 'src/app/services/auth.service';
 import { ForumService } from 'src/app/services/forum.service';
 
 
@@ -11,7 +13,10 @@ import { ForumService } from 'src/app/services/forum.service';
 })
 export class ForumComponent implements OnInit {
 
-  constructor(private service: ForumService) { }
+  constructor(
+    private service: ForumService, 
+    private authService: AuthService,
+    public router: Router) { }
 
   topics!: string[]
   newTopic!: string
@@ -55,6 +60,11 @@ export class ForumComponent implements OnInit {
         }
       )
     }
+  }
+
+  guestLogged() {
+    const role = this.authService.getRoleCookie()
+    return ( role === 'guest')
   }
 
 }
