@@ -26,6 +26,9 @@ public class Song {
     @Column(nullable = false)
     private int year;
 
+    @Column
+    private double rate;
+
     @ManyToOne
     private Genre genre;
 
