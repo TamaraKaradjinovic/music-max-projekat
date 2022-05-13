@@ -1,0 +1,33 @@
+<mat-card class="container">
+    <mat-card-title> Add song: </mat-card-title><br>
+    <mat-card-content>
+      <br><br>
+      <form class="example-form">
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your name</mat-label>
+          <input matInput placeholder="Pam" [(ngModel)]="model.name" name="name" required>
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your surname</mat-label>
+          <input matInput placeholder="Smith" [(ngModel)]="model.year" name="surname" required>
+        </mat-form-field>
+        
+        &nbsp;
+        <mat-form-field appearance="standard">
+          <mat-label>Select genre: </mat-label>
+          <mat-select [(ngModel)]="model.genre"  name="genre">
+            <mat-option  mat-menu-item *ngFor="let genre of genres; index as i" routerLink="/music/{{i}}">
+                {{genre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+       
+        <button mat-flat-button color="primary" class="confirm" (click)="addSong()">
+          Confirm
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>

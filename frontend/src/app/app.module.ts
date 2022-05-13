@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule } from '@angular/forms';
@@ -34,6 +35,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MusicComponent } from './components/music/music.component';
 import { SongComponent } from './components/song/song.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { TopListComponent } from './components/top-list/top-list.component';
+import { AddSongComponent } from './components/add-song/add-song.component';
+import { ViewSongComponent } from './components/view-song/view-song.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,9 @@ import { ForumComponent } from './components/forum/forum.component';
     SongComponent,
     MusicComponent,
     ForumComponent,
+    TopListComponent,
+    AddSongComponent,
+    ViewSongComponent,
     
   ],
   imports: [
@@ -70,7 +77,8 @@ import { ForumComponent } from './components/forum/forum.component';
     MatPaginatorModule,
     MatTabsModule,
     MatButtonToggleModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
