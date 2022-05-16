@@ -17,3 +17,11 @@
 .card-content-item {
     padding: 5px;
 }
+
+.filter {
+    margin-bottom: 10px;
+}
+
+.nores {
+    size: 15%;
+}

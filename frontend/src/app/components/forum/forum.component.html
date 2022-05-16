@@ -1,7 +1,7 @@
-<mat-tab-group headerPosition="above">
+<mat-tab-group color="accent-color" headerPosition="above">
 
 
-  <mat-tab label="Start a topic" *ngIf="guestLogged()" >
+  <mat-tab label="Start a topic" color="accent-color" *ngIf="guestLogged()" >
     <div class="mat-card-content tabs">
       <mat-card class="topic-card">
 
@@ -11,7 +11,7 @@
 
         <mat-card-content class="content1">
           <form (ngSubmit)=postNewTopic()>
-            <mat-form-field appearance="fill" class="field-half">
+            <mat-form-field appearance="fill" color="accent-color" class="field-half">
               <mat-label>Enter topic name</mat-label>
               <input matInput [(ngModel)]="newTopic" name="newTopic">
             </mat-form-field><br>

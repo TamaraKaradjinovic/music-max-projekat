@@ -23,16 +23,47 @@ export class AddSongComponent implements OnInit {
     video: null,
     albumCover: null
   }
-  constructor(
-    public dialogRef: MatDialogRef<AddSongComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    this.genres = data.genres
-  }
 
   ngOnInit(): void {
   }
 
   addSong() { }
 
+  imageFileChange(event: any) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.model.albumCover = e.target.result
+    };
+    reader.readAsDataURL(event.target.files[0]);
+    console.log(this.model);
+    this.model.albumCover = this.model.albumCover!.slice(22)
+    console.log(this.model);
+  }
+  
+  audioFileChange(event: any) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.model.audio = e.target.result
+    };
+    reader.readAsDataURL(event.target.files[0]);
+
+    console.log(this.model);
+    this.model.albumCover = this.model.albumCover!.slice(22)
+    console.log(this.model);
+  }
+
+  videoFileChange(event: any) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.model.video = e.target.result
+    };
+    reader.readAsDataURL(event.target.files[0]);
+
+    console.log(this.model);
+    this.model.albumCover = this.model.albumCover!.slice(22)
+    console.log(this.model);
+  }
 
 }
+
+
