@@ -10,10 +10,24 @@
       </mat-form-field>
       &nbsp;
       <mat-form-field appearance="standard">
+        <mat-label>Enter singer</mat-label>
+        <input matInput placeholder="Andrew Smith" [(ngModel)]="model.singers" name="surname" required>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="standard">
         <mat-label>Enter year</mat-label>
-        <input matInput placeholder="Smith" [(ngModel)]="model.year" name="surname" required>
+        <input matInput placeholder="1973" [(ngModel)]="model.year" name="surname" required>
       </mat-form-field>
 
+      
+
+      
+
+      &nbsp;
+      <mat-form-field appearance="standard">
+        <mat-label>Enter authors</mat-label>
+        <input matInput placeholder="Andrew Smith" [(ngModel)]="model.authors" name="surname" required>
+      </mat-form-field>
       &nbsp;
       <mat-form-field appearance="standard">
         <mat-label>Select genre: </mat-label>
