@@ -43,7 +43,7 @@ INSERT INTO song_singers(song_id, singers_id) VALUES (8,4);
 
 INSERT INTO topic(id, name) VALUES (1,'New fest in Novi Sad');
 INSERT INTO topic(id, name) VALUES (2, 'New Nightwish song');
-INSERT INTO topic(id, name) VALUES (3, 'The best rock band of all times?');
+INSERT INTO topic(id, name) VALUES (3, 'The best rock band of all times');
 
 INSERT INTO post(comment, topic_id, user_id) VALUES ('Wow', 1, 1);
 INSERT INTO post(comment, topic_id, user_id) VALUES ('Can\'t wait!', 1, 1);

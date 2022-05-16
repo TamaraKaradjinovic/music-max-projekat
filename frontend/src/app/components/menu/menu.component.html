@@ -9,9 +9,9 @@
 
       <button mat-button routerLink="/home">Home</button>
 
-      <button mat-button [matMenuTriggerFor]="musicMenu">Music</button>
+      <button mat-button [matMenuTriggerFor]="musicMenu">Music <mat-icon>expand_more</mat-icon></button>
       <mat-menu #musicMenu="matMenu" yPosition="below" xPosition="after">
-        <button mat-menu-item *ngFor="let genre of genres; index as i" routerLink="/music/{{i}}">
+        <button mat-menu-item *ngFor="let genre of genres; index as i" [routerLink]="['/music', genre]">
           {{genre}}
         </button>
       

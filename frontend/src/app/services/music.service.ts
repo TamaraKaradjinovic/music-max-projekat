@@ -39,6 +39,16 @@ export class MusicService {
     );
   }
 
+  getSong(name: string) {
+    return this.http.get<Song>(
+      this.url + '/song/' + name, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }
+    );
+  }
+
   getAllSingers() {
     return this.http.get<string[]>(
       this.url + '/singers', {
@@ -54,7 +64,5 @@ export class MusicService {
       this.url + '/genres', { headers: httpOptions.headers }
     );
   }
-
-
 
 }

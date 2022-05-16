@@ -9,16 +9,16 @@ import { AddSongComponent } from './components/add-song/add-song.component';
 import { TopListComponent } from './components/top-list/top-list.component';
 
 const routes: Routes = [
+
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'music', component: MusicComponent },
-  { path: 'music/:id', component: MusicComponent },
+  { path: 'music/:genre', component: MusicComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'top-list', component: TopListComponent },
   { path: 'add-song', component: AddSongComponent },
-  
-
-  { path: '**', component: HomeComponent }
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

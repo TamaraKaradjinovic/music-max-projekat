@@ -1,50 +1,65 @@
 <div class="container">
-    <button mat-button (click)="openDialog()">Add song</button>
-
-    <h3>Filter: </h3>
-    <form (ngSubmit)=filter()>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Search for singer:</mat-label>
-            <input type="text" placeholder="Pick one" aria-label="Number" matInput [matAutocomplete]="auto"
-                [(ngModel)]="singer" name="singer">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let singer of singers" [value]="singer">
-                    {{singer}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;
-
-        <mat-form-field appearance="fill">
-            <mat-label>Enter min year</mat-label>
-            <input matInput placeholder="Start year" [(ngModel)]="yearS" name="yearS">
-        </mat-form-field>
-        &nbsp;&nbsp;
-        <mat-form-field appearance="fill">
-            <mat-label>Enter max year</mat-label>
-            <input matInput placeholder="Ending year" [(ngModel)]="yearE" name="yearE">
-        </mat-form-field>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;
-
-        <mat-checkbox class="example-margin" [(ngModel)]="hasAudio" name="hasAudio"> Audio </mat-checkbox>&nbsp;&nbsp;
-        <mat-checkbox class="example-margin" [(ngModel)]="hasVideo" name="hasVideo"> Video </mat-checkbox>
-     
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;
-
-        <button mat-flat-button class="confirm accent-color text-primary-color">
-            Filter
-        </button>
-
-        <mat-divider></mat-divider>
-    </form>
-</div>
+    
+    <button *ngIf="guestLogged()" mat-button class="accent-color" (click)="openDialog()">Add song</button>
+    
+    <br><br>
+    
+    <mat-accordion class="filter" *ngIf="!emptySongs()">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Filter:
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
 
-<mat-card class="songs-container" style="display: grid; grid-template-columns: 25% 25% 25% 25%;">
-    <div class="card-content" *ngFor="let song of songs; index as i" style="margin: 20px auto;">
-        <app-song [song]="song"></app-song>
-    </div>
-</mat-card>
+            <form (ngSubmit)=filter()>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Search for singer:</mat-label>
+                    <input type="text" placeholder="Pick one" aria-label="Number" matInput [matAutocomplete]="auto"
+                        [(ngModel)]="singer" name="singer">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let singer of singers" [value]="singer">
+                            {{singer}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter min year</mat-label>
+                    <input matInput placeholder="Start year" [(ngModel)]="yearS" name="yearS">
+                </mat-form-field>
+                &nbsp;&nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter max year</mat-label>
+                    <input matInput placeholder="Ending year" [(ngModel)]="yearE" name="yearE">
+                </mat-form-field>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-checkbox class="example-margin" [(ngModel)]="hasAudio" name="hasAudio"> Audio </mat-checkbox>
+                &nbsp;&nbsp;
+                <mat-checkbox class="example-margin" [(ngModel)]="hasVideo" name="hasVideo"> Video </mat-checkbox>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <button mat-flat-button class="confirm accent-color">
+                    Filter
+                </button>
+
+                <mat-divider></mat-divider>
+            </form>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-card *ngIf="!emptySongs()" 
+            class="songs-container" style="display: grid; grid-template-columns: 25% 25% 25% 25%;">
+        <div class="card-content" *ngFor="let song of songs; index as i" style="margin: 20px auto;">
+            <app-song [song]="song"></app-song>
+        </div>
+    </mat-card>
+
+    <h3 *ngIf="emptySongs()" class="nores"><i> No results! </i></h3>

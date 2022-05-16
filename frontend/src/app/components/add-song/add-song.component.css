@@ -13,5 +13,8 @@
     align-self: flex-end;
   }
   
+  .file-input {
+    justify-self: stretch;
+  }
   
   

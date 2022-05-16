@@ -23,7 +23,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox'; 
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion'; 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule } from '@angular/forms';
@@ -78,7 +80,9 @@ import { ViewSongComponent } from './components/view-song/view-song.component';
     MatTabsModule,
     MatButtonToggleModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatIconModule,
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
