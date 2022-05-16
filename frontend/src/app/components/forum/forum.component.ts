@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/model/post';
 import { AuthService } from 'src/app/services/auth.service';
@@ -16,7 +17,7 @@ export class ForumComponent implements OnInit {
   constructor(
     private service: ForumService, 
     private authService: AuthService,
-    public router: Router) { }
+    public router: Router, private _snackBar: MatSnackBar) { }
 
   topics!: string[]
   newTopic!: string
@@ -39,6 +40,13 @@ export class ForumComponent implements OnInit {
     this.service.postTopic(this.newTopic).subscribe(
       (res) => {
         console.log("dodato!")
+
+        this._snackBar.open("Successful", 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['snackbar'],
+        });
       }
     )
   }

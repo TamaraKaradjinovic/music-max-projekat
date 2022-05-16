@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Song } from 'src/app/model/song';
 import { MusicService } from 'src/app/services/music.service';
 
@@ -25,16 +25,21 @@ export class MusicComponent implements OnInit {
   hasAudio: boolean = false
   hasVideo: boolean = false
 
-  constructor(private service: MusicService, private router: Router) { }
+  constructor(
+    private service: MusicService,
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.route.params.subscribe(params => console.log("params: "+params));
+  }
 
 
   ngOnInit(): void {
 
+    console.log('init')
+ 
     this.service.getAllSingers().subscribe(
       (res) => {
-        console.log('singers found')
         this.singers = res
-        console.log(this.singers)
       }
     )
 
@@ -42,31 +47,21 @@ export class MusicComponent implements OnInit {
 
     this.service.getAllGenres().subscribe(
       (res) => {
-        console.log('genres found')
         this.genres = res
-        console.log(this.genres)
 
-
-        const curr = + this.router.url.split("/")[2]
+        const currGenre = this.router.url.split("/")[2]
+        const curr = + currGenre
 
         this.service.getSongs().subscribe(
           (res) => {
-            console.log('genres found')
             this.allsongs = res
-            console.log(this.allsongs)
-
             if (this.router.url.split("/").length != 2) {
               this.songs = this.allsongs.filter(
-                x => {
-                  console.log(curr + " llll " + x.genre + " + " + this.genres[curr])
-                  return x.genre === this.genres[curr]
-                }
+                x => x.genre === currGenre
               )
             } else {
               this.songs = this.allsongs
             }
-            console.log(this.songs)
-
           }
         );
 
@@ -78,7 +73,7 @@ export class MusicComponent implements OnInit {
   filter() {
     console.log('filteeeeeeeeeer')
     console.log(this.songs)
-    this.songs = this.allsongs.filter(
+    this.songs = this.songs.filter(
       x => {
         console.log(this.singer
         )

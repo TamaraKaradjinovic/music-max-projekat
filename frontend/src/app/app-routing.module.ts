@@ -10,10 +10,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'music', component: MusicComponent },
-  { path: 'music/:id', component: MusicComponent },
+  { path: 'music/:genre', component: MusicComponent },
   { path: 'forum', component: ForumComponent },
-
-  { path: '**', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
