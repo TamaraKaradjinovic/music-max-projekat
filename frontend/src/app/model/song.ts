@@ -5,7 +5,7 @@ export interface Song {
     user: string
     authors: string[]
     singers : string[]
-    audio: Blob
-    video: Blob
-    albumCover: Blob
+    audio: Blob | null
+    video: Blob | null
+    albumCover: Blob | null
 }

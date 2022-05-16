@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Song } from 'src/app/model/song';
 import { MusicService } from 'src/app/services/music.service';
+import { AddSongComponent } from '../add-song/add-song.component';
+
+export interface DialogData {
+  genres: string[];
+}
 
 @Component({
   selector: 'app-music',
@@ -25,12 +31,7 @@ export class MusicComponent implements OnInit {
   hasAudio: boolean = false
   hasVideo: boolean = false
 
-  constructor(
-    private service: MusicService,
-    private router: Router,
-    private route: ActivatedRoute) {
-    this.route.params.subscribe(params => console.log("params: "+params));
-  }
+  constructor(private service: MusicService, private router: Router, public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -103,5 +104,16 @@ export class MusicComponent implements OnInit {
     { image: 'https://gsr.dev/material2-carousel/assets/demo.png' },
 
   ];
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddSongComponent, {
+      data: { genres : this.genres },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
 }

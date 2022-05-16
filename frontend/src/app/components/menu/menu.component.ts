@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MusicService } from 'src/app/services/music.service';
+import { AddSongComponent } from '../add-song/add-song.component';
 
 @Component({
   selector: 'app-menu',
@@ -23,7 +25,9 @@ export class MenuComponent implements OnInit {
       }
     );
   }
-
+  
   
 
 }
+
+

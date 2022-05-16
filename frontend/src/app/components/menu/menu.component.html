@@ -14,12 +14,24 @@
         <button mat-menu-item *ngFor="let genre of genres; index as i" [routerLink]="['/music', genre]">
           {{genre}}
         </button>
+      
         <button mat-menu-item routerLink="/music">All</button>
+
+       
+
       </mat-menu>
+      
+      
 
       <button mat-button routerLink="/forum">Forum</button>
 
-      <button mat-button routerLink="/admin">Admin</button>
+      <!-- <button mat-button routerLink="/add-song">Add song</button>
+       -->
+      
+
+      <button mat-button routerLink="/top-list">Top list</button>
+
+      
 
     </div>
     <div id="right">
