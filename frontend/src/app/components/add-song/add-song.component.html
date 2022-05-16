@@ -10,7 +10,7 @@
       </mat-form-field>
       &nbsp;
       <mat-form-field appearance="standard">
-        <mat-label>Enter your surname</mat-label>
+        <mat-label>Enter year</mat-label>
         <input matInput placeholder="Smith" [(ngModel)]="model.year" name="surname" required>
       </mat-form-field>
 
@@ -42,7 +42,10 @@
         <label class="custom-file-upload"> Select video: </label>
         <input type="file" accept="video/*" (change)="videoFileChange($event)" />
       </div>
+
+
       <br><br>
+      
       <button mat-flat-button color="primary" class="confirm" (click)="addSong()">
         Confirm
       </button>

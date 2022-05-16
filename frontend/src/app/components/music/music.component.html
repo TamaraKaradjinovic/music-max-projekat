@@ -1,7 +1,10 @@
 <div class="container">
-    <button *ngIf="!emptySongs()" mat-button class="accent-color" (click)="openDialog()">Add song</button>
+    
+    <button *ngIf="guestLogged()" mat-button class="accent-color" (click)="openDialog()">Add song</button>
+    
     <br><br>
-    <mat-accordion class="filter" *ngIf="guestLogged()">
+    
+    <mat-accordion class="filter" *ngIf="!emptySongs()">
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -43,7 +46,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;
 
-                <button mat-flat-button class="confirm accent-color text-primary-color">
+                <button mat-flat-button class="confirm accent-color">
                     Filter
                 </button>
 

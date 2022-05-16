@@ -47,5 +47,7 @@ public class MusicService {
         return singerRepository.findAll();
     }
 
-
+    public Song getSong(String name) {
+        return songRepository.findByName(name);
+    }
 }

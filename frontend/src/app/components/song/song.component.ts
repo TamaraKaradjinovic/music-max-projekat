@@ -24,6 +24,9 @@ export class SongComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ViewSongComponent, {
       data: { song : this.song },
+      autoFocus: false,
+      maxHeight: '90vh',
+      width: '50%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
