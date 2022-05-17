@@ -49,3 +49,8 @@ INSERT INTO post(comment, topic_id, user_id) VALUES ('Wow', 1, 1);
 INSERT INTO post(comment, topic_id, user_id) VALUES ('Can\'t wait!', 1, 1);
 INSERT INTO post(comment, topic_id, user_id) VALUES ('Like it!', 2, 1);
 
+INSERT INTO author(id, stage_name) VALUES (1, 'Robert Plant');
+INSERT INTO author(id, stage_name) VALUES (2, 'Kanye West');
+
+INSERT INTO song_authors(song_id, authors_id) VALUES (7, 1);
+INSERT INTO song_authors(song_id, authors_id) VALUES (8, 1);

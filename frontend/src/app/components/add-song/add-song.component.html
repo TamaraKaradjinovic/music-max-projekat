@@ -2,43 +2,50 @@
   <mat-card-title> Add song: </mat-card-title><br>
   <mat-card-content>
     <br><br>
-    <form class="example-form">
+    <form class="new-song">
       <br>
       <mat-form-field appearance="standard">
         <mat-label>Enter song name</mat-label>
         <input matInput placeholder="Pam" [(ngModel)]="model.name" name="name" required>
       </mat-form-field>
       &nbsp;
-      <mat-form-field appearance="standard">
-        <mat-label>Enter singer</mat-label>
-        <input matInput placeholder="Andrew Smith" [(ngModel)]="model.singers" name="surname" required>
-      </mat-form-field>
-      &nbsp;
+      
+      
       <mat-form-field appearance="standard">
         <mat-label>Enter year</mat-label>
         <input matInput placeholder="1973" [(ngModel)]="model.year" name="surname" required>
-      </mat-form-field>
-
-      
-
-      
-
-      &nbsp;
-      <mat-form-field appearance="standard">
-        <mat-label>Enter authors</mat-label>
-        <input matInput placeholder="Andrew Smith" [(ngModel)]="model.authors" name="surname" required>
       </mat-form-field>
       &nbsp;
       <mat-form-field appearance="standard">
         <mat-label>Select genre: </mat-label>
         <mat-select [(ngModel)]="model.genre" name="genre">
-          <mat-option mat-menu-item *ngFor="let genre of genres; index as i" routerLink="/music/{{i}}">
-            {{genre}}
+          <mat-option *ngFor="let g of allGenres; index as i" [value]="g.id">
+            {{ g.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      
-      <!-- <mat-list role="list"> -->
+
+      &nbsp;
+      <mat-form-field appearance="standard">
+        <mat-label>Select singers: </mat-label>
+        <mat-select [(ngModel)]="model.singers" name="singers" multiple>
+          <mat-option *ngFor="let s of singers" [value]="s.id" >
+            {{ s.stageName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      &nbsp;
+      <mat-form-field appearance="standard">
+        <mat-label>Select authors: </mat-label>
+        <mat-select [(ngModel)]="model.authors" name="authors" multiple>
+          <mat-option *ngFor="let a of authors" [value]="a.id">
+            {{ a.stageName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
       <div class="file-input">
         <label class="custom-file-upload"> Select cover photo: </label>&nbsp;
         <input type="file" accept="image/*" (change)="imageFileChange($event)" />
