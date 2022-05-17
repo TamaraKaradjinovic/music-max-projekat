@@ -37,28 +37,31 @@ export class AddSongComponent implements OnInit {
     this.genres = []
     this.allGenres = []
     this.musicService.getAllGenresId().subscribe(
-      (res) => {   
-        res.forEach(x => { 
+      (res) => {
+        res.forEach(x => {
           console.log(x)
-          this.allGenres.push(x)  })    
+          this.allGenres.push(x)
+        })
         console.log(this.allGenres)
       }
     )
 
     this.musicService.getAllSingersId().subscribe(
-      (res) => {   
-        res.forEach(x => { 
+      (res) => {
+        res.forEach(x => {
           console.log(x)
-          this.singers.push(x)  })    
+          this.singers.push(x)
+        })
         console.log(this.singers)
       }
     )
 
     this.musicService.getAllAuthorsId().subscribe(
-      (res) => {   
-        res.forEach(x => { 
+      (res) => {
+        res.forEach(x => {
           console.log(x)
-          this.authors.push(x)  })    
+          this.authors.push(x)
+        })
         console.log(this.authors)
       }
     )
@@ -69,10 +72,10 @@ export class AddSongComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.model.albumCover = e.target.result
+      this.model.albumCover = this.model.albumCover!.slice(22)
+      console.log(this.model);
     };
     reader.readAsDataURL(event.target.files[0]);
-    console.log(this.model);
-    this.model.albumCover = this.model.albumCover!.slice(22)
     console.log(this.model);
   }
 
@@ -100,16 +103,23 @@ export class AddSongComponent implements OnInit {
     console.log(this.model);
   }
 
-  setGenre(genre: Genre) {
-    this.model.genre = genre.id
-    console.log(" genre set: " +this.model.genre);
-  }
-
-
-  addSong() { 
+  addSong() {
     console.log(this.genre);
     console.log(this.model);
-    
+
+  }
+
+  isFilled() {
+    console.log(this.model)
+    if ( this.model.name == ''
+      || this.model.year < 1900
+      || this.model.genre == -1
+      || this.model.authors.length < 1
+      || this.model.singers.length < 1
+      || this.model.albumCover == null
+    )
+      return false;
+    return true;
   }
 
 }

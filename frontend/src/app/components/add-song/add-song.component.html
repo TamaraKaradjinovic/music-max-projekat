@@ -10,23 +10,8 @@
       </mat-form-field>
       &nbsp;
       <mat-form-field appearance="standard">
-        <mat-label>Enter singer</mat-label>
-        <input matInput placeholder="Andrew Smith" [(ngModel)]="model.singers" name="surname" required>
-      </mat-form-field>
-      &nbsp;
-      <mat-form-field appearance="standard">
         <mat-label>Enter year</mat-label>
         <input matInput placeholder="1973" [(ngModel)]="model.year" name="surname" required>
-      </mat-form-field>
-
-      
-
-      
-
-      &nbsp;
-      <mat-form-field appearance="standard">
-        <mat-label>Enter authors</mat-label>
-        <input matInput placeholder="Andrew Smith" [(ngModel)]="model.authors" name="surname" required>
       </mat-form-field>
       &nbsp;
       <mat-form-field appearance="standard">
@@ -42,7 +27,7 @@
       <mat-form-field appearance="standard">
         <mat-label>Select singers: </mat-label>
         <mat-select [(ngModel)]="model.singers" name="singers" multiple>
-          <mat-option *ngFor="let s of singers" [value]="s.id" >
+          <mat-option *ngFor="let s of singers" [value]="s.id">
             {{ s.stageName }}
           </mat-option>
         </mat-select>
@@ -80,8 +65,8 @@
 
 
       <br><br>
-      
-      <button mat-flat-button color="primary" class="confirm" (click)="addSong()">
+
+      <button mat-flat-button color="primary" class="confirm" (click)="addSong()" [disabled]="!isFilled()">
         Confirm
       </button>
     </form>
