@@ -64,8 +64,12 @@ public class MusicController {
     @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
     @PostMapping("/song")
     public SongDto getSong(@RequestBody SongDtoPost dto, HttpServletRequest request) {
-        User user = new User(); // pretraziti usera po mailu
+
+        String email = authService.getUserEmail(request.getCookies()[1]);
+        User user = authService.findUserByEmail(email);
         Song song = songMapper.mapToSong(dto, user);
+
+        musicService.addSong(song);
         return songMapper.toDTO(song);
     }
 

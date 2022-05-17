@@ -7,8 +7,7 @@ import com.example.backend.model.auth.User;
 import com.example.backend.repositories.AccountRepository;
 import com.example.backend.repositories.RoleRepository;
 import com.example.backend.repositories.UserRepository;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,7 +92,7 @@ public class AuthService {
     }
 
     private Cookie getGoodCookie(Cookie cookie) {
-        cookie.setMaxAge(24 * 60 * 60);
+        cookie.setMaxAge(60 * 60);
         cookie.setPath("/");
         return cookie;
     }
@@ -121,9 +120,21 @@ public class AuthService {
     }
 
     private Date generateExpirationDate() {
-        return new Date(System.currentTimeMillis() + 1000 * 60 * 30);
+        return new Date(new Date().getTime() + 1000 * 60 * 60 * 2);
     }
 
 
+    public String getUserEmail(Cookie cookie) {
+        JwtParser parser =  Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build();
+        Jws<Claims> claims = parser.parseClaimsJws(cookie.getValue());
+        String email = (String) claims.getBody().get("email");
+        System.out.println(email);
+        return email;
+    }
 
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

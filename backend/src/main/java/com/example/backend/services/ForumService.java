@@ -35,7 +35,7 @@ public class ForumService {
 
     public void addPost(PostDto dto, String name) {
         Topic topic = topicRepository.findByName(name);
-        User user = userRepository.findByEmail(dto.getUserEmail()).get();
+        User user = userRepository.findByEmail(dto.getUserEmail());
 
         Post post = new Post();
         post.setUser(user);

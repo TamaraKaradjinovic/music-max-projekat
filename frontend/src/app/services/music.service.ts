@@ -85,8 +85,10 @@ export class MusicService {
     );
   }
 
-  postSong(model: SongPost) {
-    throw new Error('Method not implemented.');
+  postSong(model: SongPost) {    
+    return this.http.post<SongPost>(
+    this.url + '/song', model
+  );
   }
 
 

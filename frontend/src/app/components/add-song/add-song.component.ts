@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Genre } from 'src/app/model/genre';
 import { Song } from 'src/app/model/song';
 import { SongPost } from 'src/app/model/song-post';
@@ -31,7 +32,9 @@ export class AddSongComponent implements OnInit {
 
   genre!: Genre
 
-  constructor(public musicService: MusicService) { }
+  constructor(
+    public musicService: MusicService, 
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.genres = []
@@ -105,7 +108,18 @@ export class AddSongComponent implements OnInit {
 
   addSong() {
     console.log(this.model);
-    this.musicService.postSong(this.model);
+    this.musicService.postSong(this.model).subscribe(
+      (res) => {
+        console.log("dodato!")
+
+        this._snackBar.open("Successful", 'Close', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['snackbar'],
+        });
+      }
+    )
   }
 
   isFilled() {

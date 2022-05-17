@@ -17,7 +17,8 @@ export class ForumComponent implements OnInit {
   constructor(
     private service: ForumService, 
     private authService: AuthService,
-    public router: Router, private _snackBar: MatSnackBar) { }
+    public router: Router, 
+    private _snackBar: MatSnackBar) { }
 
   topics!: string[]
   newTopic!: string

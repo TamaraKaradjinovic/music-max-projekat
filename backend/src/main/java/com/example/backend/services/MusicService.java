@@ -67,4 +67,7 @@ public class MusicService {
         return authorRepository.findAllById(authors);
     }
 
+    public void addSong(Song song) {
+        songRepository.save(song);
+    }
 }
