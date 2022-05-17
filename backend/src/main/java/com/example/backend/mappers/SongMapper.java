@@ -15,6 +15,7 @@ import com.example.backend.repositories.SongRepository;
 import com.example.backend.services.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -75,8 +76,7 @@ public class SongMapper {
 
         newSong.setName(dto.getName());
         newSong.setYear(dto.getYear());
-        newSong.setRate(0);
-
+        newSong.setRates(new ArrayList<>());
         newSong.setAudio(dto.getAudio());
         newSong.setVideo(dto.getVideo());
         newSong.setAlbumCover(dto.getAlbumCover());

@@ -92,4 +92,12 @@ public class MusicController {
         return musicService.getAllAuthors();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+    @GetMapping("/top-songs")
+    public List<SongBasicDto> getTopList() {
+        return musicService.getTopList();
+    }
+
+
+
 }

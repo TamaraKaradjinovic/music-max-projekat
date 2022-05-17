@@ -26,8 +26,8 @@ public class Song {
     @Column(nullable = false)
     private int year;
 
-    @Column
-    private double rate;
+    @OneToMany(mappedBy = "song" )
+    private List<Rate> rates;
 
     @ManyToOne
     private Genre genre;

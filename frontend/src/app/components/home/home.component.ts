@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AccAccount } from 'src/app/model/accurate-account';
+import { MusicService } from 'src/app/services/music.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  person: AccAccount = {
+    email: 'email',
+    name: 'ime',
+    surname: 'prezime'
+  }
+  constructor(private musicService: MusicService) { }
 
   ngOnInit(): void {
-    
+    this.musicService.getAccAccount().subscribe(
+      (res) => this.person=res 
+    )
   }
 
 }

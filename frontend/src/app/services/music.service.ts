@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Song } from '../model/song';
 import { Genre } from '../model/genre';
 import { SongPost } from '../model/song-post';
+import { AccAccount } from '../model/accurate-account';
 
 const httpOptions = {
   headers: new HttpHeaders()
@@ -89,6 +90,18 @@ export class MusicService {
     return this.http.post<SongPost>(
     this.url + '/song', model
   );
+  }
+
+  getTopList() {
+    return this.http.get<Song[]>(
+      this.url + '/top-songs', { headers: httpOptions.headers }
+    );
+  }
+
+  getAccAccount() {
+    return this.http.get<AccAccount>(
+      this.url + '/diligent-account', { headers: httpOptions.headers }
+    );
   }
 
 

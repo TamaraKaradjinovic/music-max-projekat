@@ -1,0 +1,9 @@
+.container {
+    margin: 30px;
+}
+
+.song-container {
+    white-space: initial;
+    display: flex;
+    align-content: flex-start;
+}

@@ -2,10 +2,7 @@ package com.example.backend.services;
 
 import com.example.backend.dtos.SongBasicDto;
 import com.example.backend.mappers.SongMapper;
-import com.example.backend.model.music.Author;
-import com.example.backend.model.music.Genre;
-import com.example.backend.model.music.Singer;
-import com.example.backend.model.music.Song;
+import com.example.backend.model.music.*;
 import com.example.backend.repositories.AuthorRepository;
 import com.example.backend.repositories.GenreRepository;
 import com.example.backend.repositories.SingerRepository;
@@ -69,5 +66,31 @@ public class MusicService {
 
     public void addSong(Song song) {
         songRepository.save(song);
+    }
+
+    public List<SongBasicDto> getTopList() {
+        List<Song> songs = songRepository.findAll();
+        songs.sort(
+                (x, y) -> {
+                    if(getAvgRate(x) > getAvgRate(y))
+                        return -1;
+                    else
+                        return 1;
+                });
+        SongMapper sm = new SongMapper(this);
+        return songs.stream().map(sm::toBasicDTO)
+                .collect(Collectors.toList());
+    }
+
+    private double getAvgRate(Song song) {
+        List<Rate> list = song.getRates();
+        if(list.size() == 0)
+            return 0;
+        double sum = 0;
+        for (Rate rate: list ) {
+            sum += rate.getRate();
+        }
+        System.err.println("ocena " + sum / list.size());
+        return sum / list.size();
     }
 }

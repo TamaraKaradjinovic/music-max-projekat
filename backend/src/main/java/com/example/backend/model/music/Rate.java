@@ -26,10 +26,12 @@ public class Rate {
     @Column
     private Date date;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "song_id")
     private Song song;
 
 }
