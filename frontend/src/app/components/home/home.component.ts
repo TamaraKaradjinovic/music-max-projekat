@@ -9,11 +9,12 @@ import { MusicService } from 'src/app/services/music.service';
 })
 export class HomeComponent implements OnInit {
 
-  person: AccAccount = {
-    email: 'email',
-    name: 'ime',
-    surname: 'prezime'
-  }
+  person!: AccAccount 
+  // = {
+  //   // email: 'email',
+  //   // name: 'ime',
+  //   // surname: 'prezime'
+  // }
   constructor(private musicService: MusicService) { }
 
   ngOnInit(): void {

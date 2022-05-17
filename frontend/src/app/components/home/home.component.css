@@ -1,0 +1,17 @@
+.container {
+    margin: 80px;
+}
+
+.account-container {
+    white-space: initial;
+    display: flex;
+    align-content: flex;
+}
+
+.rcorners2 {
+    border-radius: 30px;
+    border: 1px solid #f1f10b;
+    padding: 30px;
+    width: 250px;
+    height: 170px;
+  }
