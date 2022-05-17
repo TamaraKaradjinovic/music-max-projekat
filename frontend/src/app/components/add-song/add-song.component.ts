@@ -104,9 +104,8 @@ export class AddSongComponent implements OnInit {
   }
 
   addSong() {
-    console.log(this.genre);
     console.log(this.model);
-
+    this.musicService.postSong(this.model);
   }
 
   isFilled() {
