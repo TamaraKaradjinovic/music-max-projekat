@@ -1,12 +1,10 @@
 package com.example.backend.services;
 
+import com.example.backend.dtos.AccountDto;
 import com.example.backend.dtos.SongBasicDto;
 import com.example.backend.mappers.SongMapper;
 import com.example.backend.model.music.*;
-import com.example.backend.repositories.AuthorRepository;
-import com.example.backend.repositories.GenreRepository;
-import com.example.backend.repositories.SingerRepository;
-import com.example.backend.repositories.SongRepository;
+import com.example.backend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -91,5 +89,9 @@ public class MusicService {
         }
         System.err.println("ocena " + sum / list.size());
         return sum / list.size();
+    }
+
+    public Long getDiligentUserId() {
+        return songRepository.getDiligent();
     }
 }

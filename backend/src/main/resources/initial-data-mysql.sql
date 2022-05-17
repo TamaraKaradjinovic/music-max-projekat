@@ -4,6 +4,12 @@ INSERT INTO role (id, name) VALUES (2, 'admin');
 INSERT INTO user(id, email, password, role_id) VALUES (1,'pam@mail.com', '0123456', 1);
 INSERT INTO user(id, email, password, role_id) VALUES (2, 'pera@mail.com', '0123456', 1);
 
+INSERT INTO account(gender, name, phone_number, surname, user_id, birthdate)
+VALUES (1, 'Pam', '0664445555', 'Smith', 1, '1989-02-04' );
+
+INSERT INTO account(gender, name, phone_number, surname, user_id, birthdate)
+VALUES (0, 'Pera', '0664446666', 'Peric', 2 , '1999-02-02');
+
 INSERT INTO singer(id, stage_name) VALUES (1,'Metallica');
 INSERT INTO singer(id, stage_name) VALUES (2,'Rihanna');
 INSERT INTO singer(id, stage_name) VALUES (3,'Lady Gaga');

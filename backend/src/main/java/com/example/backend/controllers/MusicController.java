@@ -1,9 +1,11 @@
 package com.example.backend.controllers;
 
+import com.example.backend.dtos.AccountDto;
 import com.example.backend.dtos.SongBasicDto;
 import com.example.backend.dtos.SongDto;
 import com.example.backend.dtos.SongDtoPost;
 import com.example.backend.mappers.SongMapper;
+import com.example.backend.model.auth.Account;
 import com.example.backend.model.auth.User;
 import com.example.backend.model.music.Author;
 import com.example.backend.model.music.Genre;
@@ -27,7 +29,7 @@ public class MusicController {
 
     private final AuthService authService;
 
-    private SongMapper songMapper;
+    private final SongMapper songMapper;
 
     @Autowired
     public MusicController(MusicService musicService, AuthService authService) {
@@ -98,6 +100,13 @@ public class MusicController {
         return musicService.getTopList();
     }
 
+
+    @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+    @GetMapping("/diligent-account")
+    public AccountDto getDiligentUser() {
+        Account acc = authService.findAccountByUserId(musicService.getDiligentUserId());
+        return new AccountDto(acc.getUser().getEmail(), acc.getName(), acc.getSurname());
+    }
 
 
 }

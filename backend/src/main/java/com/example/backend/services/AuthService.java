@@ -23,7 +23,6 @@ public class AuthService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final AccountRepository accountRepository;
-
     private final SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     @Autowired
@@ -136,5 +135,9 @@ public class AuthService {
 
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public Account findAccountByUserId(Long id) {
+        return accountRepository.findByUserId(id);
     }
 }
