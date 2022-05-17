@@ -1,6 +1,5 @@
 package com.example.backend.services;
 
-import com.example.backend.dtos.AccountDto;
 import com.example.backend.dtos.SongBasicDto;
 import com.example.backend.mappers.SongMapper;
 import com.example.backend.model.music.*;
@@ -18,13 +17,15 @@ public class MusicService {
     private final SongRepository songRepository;
     private final SingerRepository singerRepository;
     private final AuthorRepository authorRepository;
+    private final RateRepository rateRepository;
 
     @Autowired
-    public MusicService(GenreRepository genreRepository, SongRepository songRepository, SingerRepository singerRepository, AuthorRepository authorRepository) {
+    public MusicService(GenreRepository genreRepository, SongRepository songRepository, SingerRepository singerRepository, AuthorRepository authorRepository, RateRepository rateRepository) {
         this.genreRepository = genreRepository;
         this.songRepository = songRepository;
         this.singerRepository = singerRepository;
         this.authorRepository = authorRepository;
+        this.rateRepository = rateRepository;
     }
     public List<SongBasicDto> getAllSongsBasic() {
         SongMapper sm = new SongMapper(this);
@@ -93,5 +94,9 @@ public class MusicService {
 
     public Long getDiligentUserId() {
         return songRepository.getDiligent();
+    }
+
+    public void addRate(Rate rate) {
+        rateRepository.save(rate);
     }
 }

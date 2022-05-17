@@ -1,22 +1,17 @@
 package com.example.backend.controllers;
 
-import com.example.backend.dtos.AccountDto;
-import com.example.backend.dtos.SongBasicDto;
-import com.example.backend.dtos.SongDto;
-import com.example.backend.dtos.SongDtoPost;
+import com.example.backend.dtos.*;
 import com.example.backend.mappers.SongMapper;
 import com.example.backend.model.auth.Account;
 import com.example.backend.model.auth.User;
-import com.example.backend.model.music.Author;
-import com.example.backend.model.music.Genre;
-import com.example.backend.model.music.Singer;
-import com.example.backend.model.music.Song;
+import com.example.backend.model.music.*;
 import com.example.backend.services.AuthService;
 import com.example.backend.services.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -108,5 +103,23 @@ public class MusicController {
         return new AccountDto(acc.getUser().getEmail(), acc.getName(), acc.getSurname());
     }
 
+    @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+    @PostMapping("/rate")
+    public SongDto rateSong(@RequestBody RateDto dto, HttpServletRequest request) {
+
+        String email = authService.getUserEmail(request.getCookies()[1]);
+        User user = authService.findUserByEmail(email);
+
+        Song song = musicService.getSong(dto.getSongName());
+
+        Rate rate = new Rate();
+        rate.setUser(user);
+        rate.setSong(song);
+        rate.setRate(dto.getRate());
+        rate.setDate(new Date());
+
+        musicService.addRate(rate);
+        return songMapper.toDTO(song);
+    }
 
 }

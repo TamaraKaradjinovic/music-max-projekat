@@ -4,6 +4,7 @@ import { AuthService } from "../../services/auth.service";
 
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,21 +12,22 @@ import { Subscription } from "rxjs";
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  model : Login = {
-    email : '',
-    password : ''
+  model: Login = {
+    email: '',
+    password: ''
   }
-  
+
   private error: string | undefined;
 
   constructor(
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
-  subscriptions : Subscription[] = [];
+  subscriptions: Subscription[] = [];
 
   ngOnDestroy(): void {
     console.log('gasim se...')
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         i = i + 1
       x.unsubscribe();
     }
-    console.log('ukupno...' + u + ' ugasio sam '+ i)
+    console.log('ukupno...' + u + ' ugasio sam ' + i)
   }
 
   login() {
@@ -45,12 +47,26 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.subscriptions.push(this.authService.login(this.model.email, this.model.password).subscribe(
         (res) => {
           this.authService.email = this.model.email
-          console.log('logged in')
+          this._snackBar.open('Welcome!', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['snackbar'],
+          });
           this.authService.router.navigate(['/home'])
         },
         (err) => {
           if (err.status === 400) {
-            this.error = 'Wrong email or password';
+
+            this._snackBar.open('Wrong email or password', 'Close', {
+              duration: 3000,
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['snackbar'],
+            });
+
+            this.router.navigate(['/music'])
+
           }
         }
       ))
