@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     email : '',
     password : ''
   }
+  
   private error: string | undefined;
 
   constructor(
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.model.email != '' && this.model.password != '') {
       this.subscriptions.push(this.authService.login(this.model.email, this.model.password).subscribe(
         (res) => {
+          this.authService.email = this.model.email
           console.log('logged in')
           this.authService.router.navigate(['/home'])
         },

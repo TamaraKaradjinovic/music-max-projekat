@@ -34,10 +34,11 @@
       
 
     </div>
-    <div id="right">
+    <div id="right" *ngIf="!guestLogged() && !adminLogged()" >
       <button mat-button routerLink="/login">Login</button>
       <button mat-button routerLink="/registration">Register</button>
     </div>
+    <h3 *ngIf="guestLogged() || adminLogged()"> </h3>
 
   </mat-toolbar>
 

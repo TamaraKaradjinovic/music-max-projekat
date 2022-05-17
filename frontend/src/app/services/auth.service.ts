@@ -21,6 +21,8 @@ httpOptions.headers.append('Content-Type', 'application/x-www-form-urlencoded; c
 export class AuthService {
   private readonly url = 'http://localhost:9000/music-max/auth';
 
+  email : string = ''
+
   constructor(
     private http: HttpClient,
     public router: Router,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/services/auth.service';
 import { MusicService } from 'src/app/services/music.service';
 import { AddSongComponent } from '../add-song/add-song.component';
 
@@ -10,12 +11,17 @@ import { AddSongComponent } from '../add-song/add-song.component';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private service: MusicService) { }
+  email!: string
+
+  constructor(
+    private authService: AuthService, 
+    private service: MusicService) { }
 
   genres: string[] = []
   
   ngOnInit(): void {
-
+    console.log(this.authService.email);
+    
     this.service.getAllGenres().subscribe(
       (res) => {
         console.log('genres found')
@@ -26,6 +32,16 @@ export class MenuComponent implements OnInit {
     );
   }
   
+  guestLogged() {
+    const role = this.authService.getRoleCookie()
+    return ( role === 'guest')
+  }
+
+  adminLogged() {
+    const role = this.authService.getRoleCookie()
+    return (role === 'admin')
+  }
+
   
 
 }

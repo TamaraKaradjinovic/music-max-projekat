@@ -1,10 +1,8 @@
 <div scrolling="yes">
-
-
+    
     <h1> {{song.name}} </h1>
     <h5> Singers:{{song.singers}}</h5>
-     <br>
-     
+    <br>
 
     <div style="display: grid; grid-template-columns: 50% 50%;">
         <div class="wrapper">
@@ -13,14 +11,11 @@
             </div>
         </div>
         <div>
-            
-
             Authors:
             <span *ngFor="let a of song.authors"> {{ a }} </span>
             <br><br>
-
             Year: {{song.year}}
-            <br><br> 
+            <br><br>
             Genre: {{this.song.genre}}
             <br><br>
             <small>Added by: <i>{{song.user}}</i> </small>
@@ -37,8 +32,8 @@
         </audio>
     </div>
     <small><i *ngIf="song.audio == null">
-        This song doesn't have audio added.
-    </i>
+            This song doesn't have audio added.
+        </i>
     </small>
 
 
@@ -48,25 +43,23 @@
     <br><br>
     <div *ngIf="song.video != null">
         <h3> Watch music video: </h3>
-        <video width="100%" controls>
-            <source src="{{song.video}}" type="video/mp4">
-            Your browser does not support the video tag.
+        <video width="100%" controls src="data:video/mp4;base64,{{song.video}}">
         </video>
     </div>
     <small>
-    <i *ngIf="song.video == null">
-        This song doesn't have video added.
-    </i>
+        <i *ngIf="song.video == null">
+            This song doesn't have video added.
+        </i>
     </small>
 
     <br><br><br>
 
-    Rate:
+    <div *ngIf="guestLogged()">
+        Rate:
+        <mat-slider style="width: 80%; " thumbLabel [displayWith]="formatLabel" tickInterval="1" step="1" min="0"
+            max="10" aria-label="units"></mat-slider>
 
-    <mat-slider style="width: 80%; " thumbLabel [displayWith]="formatLabel" tickInterval="1" step="1" min="0" max="10"
-        aria-label="units"></mat-slider>
-
-    <button *ngIf="guestLogged()" mat-button class="accent-color" (click)="rate()"> Submit </button>
-    
+        <button mat-button class="accent-color" (click)="rate()"> Submit </button>
+    </div>
 
 </div>
