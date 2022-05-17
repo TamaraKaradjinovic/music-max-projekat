@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Song } from '../model/song';
+import { Genre } from '../model/genre';
 
 const httpOptions = {
   headers: new HttpHeaders()
@@ -64,5 +65,24 @@ export class MusicService {
       this.url + '/genres', { headers: httpOptions.headers }
     );
   }
+
+  getAllSingersId() {
+    return this.http.get<{ id: number, stageName: string }[]>(
+      this.url + '/id-singers', { headers: httpOptions.headers }
+    );
+  }
+
+  getAllAuthorsId() {
+    return this.http.get<{ id: number, stageName: string }[]>(
+      this.url + '/id-authors', { headers: httpOptions.headers }
+    );
+  }
+
+  getAllGenresId() {
+    return this.http.get<Genre[]>(
+      this.url + '/id-genres', { headers: httpOptions.headers }
+    );
+  }
+
 
 }

@@ -2,13 +2,29 @@ package com.example.backend.mappers;
 
 import com.example.backend.dtos.SongBasicDto;
 import com.example.backend.dtos.SongDto;
+import com.example.backend.dtos.SongDtoPost;
+import com.example.backend.model.auth.User;
 import com.example.backend.model.music.Author;
+import com.example.backend.model.music.Genre;
 import com.example.backend.model.music.Singer;
 import com.example.backend.model.music.Song;
+import com.example.backend.repositories.AuthorRepository;
+import com.example.backend.repositories.GenreRepository;
+import com.example.backend.repositories.SingerRepository;
+import com.example.backend.repositories.SongRepository;
+import com.example.backend.services.MusicService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Set;
 
 public class SongMapper {
+
+    private final MusicService musicService;
+
+    public SongMapper(MusicService musicService) {
+        this.musicService = musicService;
+    }
 
     public SongBasicDto toBasicDTO(Song song) {
 
@@ -49,4 +65,28 @@ public class SongMapper {
         );
     }
 
+    public Song mapToSong(SongDtoPost dto, User user) {
+
+        Genre genre = musicService.getGenreById(dto.getGenre());
+        List<Singer> singers = musicService.getSingersByIds(dto.getSingers());
+        List<Author> authors = musicService.getAuthorsByIds(dto.getSingers());
+
+        Song newSong = new Song();
+
+        newSong.setName(dto.getName());
+        newSong.setYear(dto.getYear());
+        newSong.setRate(0);
+
+        newSong.setAudio(dto.getAudio());
+        newSong.setVideo(dto.getVideo());
+        newSong.setAlbumCover(dto.getAlbumCover());
+
+        newSong.setGenre(genre);
+        newSong.setSingers(singers);
+        newSong.setAuthors(authors);
+
+        newSong.setUser(user);
+
+        return newSong;
+    }
 }
