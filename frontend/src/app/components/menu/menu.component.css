@@ -6,11 +6,10 @@
     background-color: rgb(25, 36, 36);
 }
 
-#right {
+.right {
     width: 50%;
     text-align: end;
 }
-
 
 button {
     font-size: large;

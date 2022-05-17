@@ -34,15 +34,21 @@ export class MenuComponent implements OnInit {
   
   guestLogged() {
     const role = this.authService.getRoleCookie()
+
+    console.log(this.authService.getRoleCookie());
     return ( role === 'guest')
   }
 
   adminLogged() {
     const role = this.authService.getRoleCookie()
+    console.log(this.authService.getRoleCookie());
+    
     return (role === 'admin')
   }
 
-  
+  logout() {
+    this.authService.logout()
+  }
 
 }
 

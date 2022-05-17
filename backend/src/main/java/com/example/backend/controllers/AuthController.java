@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -48,9 +49,9 @@ public class AuthController {
 
     @GetMapping("/logout")
     public ResponseEntity logout(HttpServletResponse response) {
-
-        response.addCookie(authService.logout());
-
+        Cookie[] badCookies = authService.logout();
+        response.addCookie(badCookies[0]);
+        response.addCookie(badCookies[1]);
         return ResponseEntity.ok().build();
     }
 

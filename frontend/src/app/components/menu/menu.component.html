@@ -14,30 +14,35 @@
         <button mat-menu-item *ngFor="let genre of genres; index as i" [routerLink]="['/music', genre]">
           {{genre}}
         </button>
-      
+
         <button mat-menu-item routerLink="/music">All</button>
 
-       
+
 
       </mat-menu>
-      
-      
+
+
 
       <button mat-button routerLink="/forum">Forum</button>
 
       <!-- <button mat-button routerLink="/add-song">Add song</button>
        -->
-      
+
 
       <button mat-button routerLink="/top-list">Top list</button>
 
-      
+
 
     </div>
-    <div id="right" *ngIf="!guestLogged() && !adminLogged()" >
+    <div class="right" *ngIf="!guestLogged() && !adminLogged()">
       <button mat-button routerLink="/login">Login</button>
       <button mat-button routerLink="/registration">Register</button>
     </div>
+
+    <div class="right" mat-button *ngIf="guestLogged() || adminLogged()">
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+
     <h3 *ngIf="guestLogged() || adminLogged()"> </h3>
 
   </mat-toolbar>

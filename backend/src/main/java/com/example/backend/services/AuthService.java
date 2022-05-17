@@ -96,15 +96,21 @@ public class AuthService {
         return cookie;
     }
 
-    public Cookie logout() {
-        return getBadCookie();
+    public Cookie[] logout() {
+        return getBadCookies();
     }
 
-    private Cookie getBadCookie() {
+    private Cookie[] getBadCookies() {
         Cookie tokenCookie = new Cookie("token", null);
         tokenCookie.setMaxAge(0);
         tokenCookie.setPath("/");
-        return tokenCookie;
+
+        Cookie roleCookie = new Cookie("role", null);
+        roleCookie.setHttpOnly(false);
+        roleCookie.setMaxAge(0);
+        roleCookie.setPath("/");
+
+        return new Cookie[]{tokenCookie, roleCookie};
     }
 
     private String generateToken(String email, String role) {
