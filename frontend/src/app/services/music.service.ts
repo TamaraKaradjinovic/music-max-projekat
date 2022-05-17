@@ -104,5 +104,10 @@ export class MusicService {
     );
   }
 
+  postRate(model: {songName: string, rate: number}) {    
+    return this.http.post<number>(
+    this.url + '/rate', model
+  );
+  }
 
 }

@@ -12,6 +12,8 @@ import { ViewSongDialogData } from '../song/song.component';
 })
 export class ViewSongComponent implements OnInit {
 
+  myRate : number | null = null
+
   song: Song = {
     name: '',
     year: 0,
@@ -54,7 +56,10 @@ export class ViewSongComponent implements OnInit {
   }
 
   rate() {
-
+  }
+  
+  setRate(value: number) {
+    this.myRate = value
   }
 
   isRated() : boolean {

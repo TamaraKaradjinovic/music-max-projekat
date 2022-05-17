@@ -59,9 +59,11 @@
     <div *ngIf="guestLogged()">
         Rate:
         <mat-slider style="width: 80%; " thumbLabel [displayWith]="formatLabel" tickInterval="1" step="1" min="0"
-            max="10" aria-label="units"></mat-slider>
-
-        <button mat-button class="accent-color" (click)="rate()"> Submit </button>
+            max="10" aria-label="units" 
+            (input)="myRate = $event.value" 
+            [value]="myRate"></mat-slider>
+          {{myRate}}  
+        <button mat-button class="accent-color" (click)="rate()" [disabled]="myRate==null"> Submit </button>
     </div>
 
 </div>
