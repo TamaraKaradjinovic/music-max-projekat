@@ -4,6 +4,7 @@
     <h1> {{song.name}} </h1>
     <h5> Singers:{{song.singers}}</h5>
      <br>
+     
 
     <div style="display: grid; grid-template-columns: 50% 50%;">
         <div class="wrapper">
@@ -20,7 +21,8 @@
 
             Year: {{song.year}}
             <br><br> 
-            <!-- zanr  -->
+            Genre: {{this.song.genre}}
+            <br><br>
             <small>Added by: <i>{{song.user}}</i> </small>
         </div>
     </div>
@@ -34,9 +36,10 @@
             Your browser does not support the audio tag.
         </audio>
     </div>
-    <i *ngIf="song.audio == null">
+    <small><i *ngIf="song.audio == null">
         This song doesn't have audio added.
     </i>
+    </small>
 
 
     <br><br><br>
@@ -50,10 +53,11 @@
             Your browser does not support the video tag.
         </video>
     </div>
-
+    <small>
     <i *ngIf="song.video == null">
         This song doesn't have video added.
     </i>
+    </small>
 
     <br><br><br>
 

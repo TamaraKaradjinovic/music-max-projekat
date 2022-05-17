@@ -26,6 +26,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion'; 
+// import {MatList, MatListModule} from '@angular/material/list';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule } from '@angular/forms';
@@ -83,6 +84,7 @@ import { ViewSongComponent } from './components/view-song/view-song.component';
     MatIconModule,
     MatDialogModule,
     MatExpansionModule
+    // MatList
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
