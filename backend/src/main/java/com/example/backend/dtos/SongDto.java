@@ -9,6 +9,7 @@ import java.util.List;
 public class SongDto implements Serializable {
     private final String name;
     private final int year;
+    private final double rate;
     private final String genre;
     private final String user;
     private final List<String> authors;

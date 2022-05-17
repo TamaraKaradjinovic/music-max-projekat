@@ -9,6 +9,7 @@ import java.util.List;
 public class SongBasicDto implements Serializable {
     private final String name;
     private final int year;
+    private final double rate;
     private final String genre;
     private final List<String> singers;
     private final byte[] albumCover;

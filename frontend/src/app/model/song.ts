@@ -1,6 +1,7 @@
 export interface Song {
     name: string
     year: number
+    rate: number
     genre: string
     user: string
     authors: string[]

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Genre } from 'src/app/model/genre';
 import { Song } from 'src/app/model/song';
 import { SongPost } from 'src/app/model/song-post';
@@ -34,7 +35,8 @@ export class AddSongComponent implements OnInit {
 
   constructor(
     public musicService: MusicService, 
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.genres = []
@@ -75,7 +77,7 @@ export class AddSongComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.model.albumCover = e.target.result
-      this.model.albumCover = this.model.albumCover!.slice(22)
+      this.model.albumCover = this.model.albumCover!.slice(23)
       console.log(this.model);
     };
     reader.readAsDataURL(event.target.files[0]);
@@ -86,7 +88,7 @@ export class AddSongComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.model.audio = e.target.result
-      this.model.audio = this.model.audio!.slice(22)
+      this.model.audio = this.model.audio!.slice(23)
     };
     reader.readAsDataURL(event.target.files[0]);
     console.log(this.model);
@@ -97,7 +99,6 @@ export class AddSongComponent implements OnInit {
     reader.onload = (e: any) => {
       this.model.video = e.target.result
       this.model.video = this.model.video!.slice(22)
-
     };
     reader.readAsDataURL(event.target.files[0]);
     console.log(this.model);
@@ -115,6 +116,9 @@ export class AddSongComponent implements OnInit {
           verticalPosition: 'top',
           panelClass: ['snackbar'],
         });
+
+        this.router.navigate(['/music'])
+
       }
     )
   }

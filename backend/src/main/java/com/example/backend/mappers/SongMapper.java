@@ -4,10 +4,7 @@ import com.example.backend.dtos.SongBasicDto;
 import com.example.backend.dtos.SongDto;
 import com.example.backend.dtos.SongDtoPost;
 import com.example.backend.model.auth.User;
-import com.example.backend.model.music.Author;
-import com.example.backend.model.music.Genre;
-import com.example.backend.model.music.Singer;
-import com.example.backend.model.music.Song;
+import com.example.backend.model.music.*;
 import com.example.backend.repositories.AuthorRepository;
 import com.example.backend.repositories.GenreRepository;
 import com.example.backend.repositories.SingerRepository;
@@ -33,9 +30,17 @@ public class SongMapper {
                 Singer::getStageName
         ).toList();
 
+        List<Rate> rates = song.getRates();
+        double avg = 0;
+        for (Rate r: rates) {
+            avg += r.getRate();
+        }
+        avg = avg / rates.size();
+
         return new SongBasicDto(
                 song.getName(),
                 song.getYear(),
+                avg,
                 song.getGenre().getName(),
                 singers,
                 song.getAlbumCover()
@@ -53,9 +58,17 @@ public class SongMapper {
                 Singer::getStageName
         ).toList();
 
+        List<Rate> rates = song.getRates();
+        double avg = 0;
+        for (Rate r: rates) {
+            avg += r.getRate();
+        }
+        avg = avg / rates.size();
+
         return new SongDto(
                 song.getName(),
                 song.getYear(),
+                avg,
                 song.getGenre().getName(),
                 song.getUser().getEmail(),
                 authors,

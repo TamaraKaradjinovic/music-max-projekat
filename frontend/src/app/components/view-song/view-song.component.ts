@@ -12,7 +12,18 @@ import { ViewSongDialogData } from '../song/song.component';
 })
 export class ViewSongComponent implements OnInit {
 
-  song!: Song;
+  song: Song = {
+    name: '',
+    year: 0,
+    genre: '',
+    user: '',
+    authors: [],
+    singers: [],
+    audio: null,
+    video: null,
+    albumCover: null,
+    rate: 0
+  };
 
   constructor(
     public musicService: MusicService,
@@ -44,6 +55,10 @@ export class ViewSongComponent implements OnInit {
 
   rate() {
 
+  }
+
+  isRated() : boolean {
+    return !isNaN(this.song.rate)
   }
 
 }

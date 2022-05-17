@@ -9,11 +9,8 @@ import com.example.backend.repositories.SingerRepository;
 import com.example.backend.repositories.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -74,8 +71,10 @@ public class MusicService {
                 (x, y) -> {
                     if(getAvgRate(x) > getAvgRate(y))
                         return -1;
-                    else
+                    else if(getAvgRate(x) > getAvgRate(y))
                         return 1;
+                    else
+                        return 0;
                 });
         SongMapper sm = new SongMapper(this);
         return songs.stream().map(sm::toBasicDTO)

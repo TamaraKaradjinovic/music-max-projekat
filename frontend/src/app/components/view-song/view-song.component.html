@@ -1,7 +1,7 @@
 <div scrolling="yes">
     
     <h1> {{song.name}} </h1>
-    <h5> Singers:{{song.singers}}</h5>
+    <h3> {{song.singers}} </h3>
     <br>
 
     <div style="display: grid; grid-template-columns: 50% 50%;">
@@ -17,7 +17,10 @@
             Year: {{song.year}}
             <br><br>
             Genre: {{this.song.genre}}
-            <br><br>
+            <br><br><br>
+            <p *ngIf="isRated()"> Community rate: <b>{{this.song.rate}} </b> <span class="material-icons">star</span> </p> 
+            <i *ngIf="!isRated()"> Song has no rates yet! </i>
+            <br><br><br><br>
             <small>Added by: <i>{{song.user}}</i> </small>
         </div>
     </div>
@@ -26,8 +29,7 @@
     <br><br>
     <div *ngIf="song.audio != null">
         <h3> Listen: </h3>
-        <audio controls style="width: 100%; ">
-            <source src="{{song.audio}}" type="audio/mp3">
+        <audio controls style="width: 100%;" controls src="data:audio/mp3;base64,{{song.audio}}">
             Your browser does not support the audio tag.
         </audio>
     </div>
