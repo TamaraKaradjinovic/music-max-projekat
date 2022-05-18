@@ -42,10 +42,6 @@ export class MusicComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log('init')
-
-    console.log(this.router.url.split("/")[2])
-
     this.service.getAllGenres().subscribe(
 
       (res) => {
@@ -57,7 +53,6 @@ export class MusicComponent implements OnInit {
         this.service.getSongs().subscribe(
           (res) => {
             this.allSongs = res
-            console.log("songs: " + this.allSongs)
             if (this.router.url.split("/").length != 2) {
               this.songs = this.allSongs.filter(
                 x => x.genre === currGenre
@@ -80,13 +75,8 @@ export class MusicComponent implements OnInit {
   }
 
   filter() {
-    console.log('filteeeeeeeeeer')
-    console.log(this.songs)
     this.songs = this.songs.filter(
       x => {
-        console.log(this.singer
-        )
-
         return (
           x.year >= this.yearS && x.year <= this.yearE
           && ((typeof this.singer === "undefined") || x.singers.indexOf(this.singer!) != -1)

@@ -1,4 +1,5 @@
-<div scrolling="yes">
+<mat-spinner class="loading" *ngIf="loading" [mode]="'indeterminate'"></mat-spinner>
+<div *ngIf="!loading" scrolling="yes">
     
     <h1> {{song.name}} </h1>
     <h3> {{song.singers}} </h3>

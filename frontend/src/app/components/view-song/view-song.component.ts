@@ -13,6 +13,8 @@ import { ViewSongDialogData } from '../song/song.component';
 })
 export class ViewSongComponent implements OnInit {
 
+  loading = true;
+
   myRate : number | null = null
 
   song: Song = {
@@ -39,7 +41,7 @@ export class ViewSongComponent implements OnInit {
     musicService.getSong(data.song.name).subscribe(
       (res) => {
         this.song = res
-        console.log(this.song.user)
+        this.loading = false
       }
     )
 

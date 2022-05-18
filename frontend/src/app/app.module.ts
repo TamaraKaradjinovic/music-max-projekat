@@ -26,6 +26,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+
 // import {MatList, MatListModule} from '@angular/material/list';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
@@ -83,7 +85,8 @@ import { ViewSongComponent } from './components/view-song/view-song.component';
     MatCheckboxModule,
     MatIconModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
     // MatList
   ],
   providers: [

@@ -22,7 +22,7 @@ export class AddSongComponent implements OnInit {
 
   model: SongPost = {
     name: '',
-    year: -1,
+    year: 1900,
     genre: -1,
     authors: [],
     singers: [],
@@ -34,8 +34,9 @@ export class AddSongComponent implements OnInit {
   genre!: Genre
 
   constructor(
-    public musicService: MusicService, 
+    public musicService: MusicService,
     private _snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<AddSongComponent>,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -98,7 +99,7 @@ export class AddSongComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.model.video = e.target.result
-      this.model.video = this.model.video!.slice(22)
+      this.model.video = this.model.video!.slice(24)
     };
     reader.readAsDataURL(event.target.files[0]);
     console.log(this.model);
@@ -109,6 +110,8 @@ export class AddSongComponent implements OnInit {
     this.musicService.postSong(this.model).subscribe(
       (res) => {
         console.log("dodato!")
+
+        this.dialogRef.close()
 
         this._snackBar.open("Successful", 'Close', {
           duration: 3000,
@@ -125,8 +128,8 @@ export class AddSongComponent implements OnInit {
 
   isFilled() {
     console.log(this.model)
-    if ( this.model.name == ''
-      || this.model.year < 1900
+    if (this.model.name == ''
+      || this.model.year <= 1900
       || this.model.genre == -1
       || this.model.authors.length < 1
       || this.model.singers.length < 1

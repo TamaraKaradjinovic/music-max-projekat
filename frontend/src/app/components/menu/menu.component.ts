@@ -20,29 +20,21 @@ export class MenuComponent implements OnInit {
   genres: string[] = []
   
   ngOnInit(): void {
-    console.log(this.authService.email);
     
     this.service.getAllGenres().subscribe(
       (res) => {
-        console.log('genres found')
         this.genres = res
-        console.log(this.genres)
-
       }
     );
   }
   
   guestLogged() {
     const role = this.authService.getRoleCookie()
-
-    console.log(this.authService.getRoleCookie());
     return ( role === 'guest')
   }
 
   adminLogged() {
     const role = this.authService.getRoleCookie()
-    console.log(this.authService.getRoleCookie());
-    
     return (role === 'admin')
   }
 
