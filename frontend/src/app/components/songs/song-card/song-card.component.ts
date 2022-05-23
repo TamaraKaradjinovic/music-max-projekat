@@ -8,11 +8,11 @@ export interface ViewSongDialogData {
 }
 
 @Component({
-  selector: 'app-song',
-  templateUrl: './song.component.html',
-  styleUrls: ['./song.component.css']
+  selector: 'app-song-card',
+  templateUrl: './song-card.component.html',
+  styleUrls: ['./song-card.component.css']
 })
-export class SongComponent implements OnInit {
+export class SongCardComponent implements OnInit {
 
   @Input() song!: Song
   constructor(public dialog: MatDialog) { }
