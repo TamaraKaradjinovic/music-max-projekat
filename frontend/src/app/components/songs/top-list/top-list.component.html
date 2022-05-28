@@ -6,7 +6,7 @@
         <div class="card-content" *ngFor="let song of songs; index as i"
             style="display: grid; grid-template-columns: 40% 30%; margin-left: 1px ; margin-top: 20px auto;  margin-bottom: 20px auto;">
             <h1 style="text-align: end;"><b>{{i+1}}.</b></h1>
-            <app-song [song]="song"></app-song><br>
+            <app-song-card [song]="song"></app-song-card><br>
         </div>
     </mat-card>
 </div>
