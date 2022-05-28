@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Song } from 'src/app/model/song';
 import { AuthService } from 'src/app/services/auth.service';
 import { MusicService } from 'src/app/services/music.service';
-import { ViewSongDialogData } from '../song/song.component';
+import { ViewSongDialogData } from '../song-card/song-card.component';
 
 @Component({
   selector: 'app-view-song',

@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { DateFilterFn } from '@angular/material/datepicker';
-import {Account} from "../../model/account";
-import {AuthService} from "../../services/auth.service";
+import {Account} from "../../../model/account";
+import {AuthService} from "../../../services/auth.service";
 import {Subscription} from "rxjs";
 
 @Component({

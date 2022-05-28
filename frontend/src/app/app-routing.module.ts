@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { MusicComponent } from './components/music/music.component';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { MusicComponent } from './components/songs/music/music.component';
+import { RegistrationComponent } from './components/auth/registration/registration.component';
 import { ForumComponent } from './components/forum/forum.component';
-import { AddSongComponent } from './components/add-song/add-song.component';
-import { TopListComponent } from './components/top-list/top-list.component';
+import { AddSongComponent } from './components/songs/add-song/add-song.component';
+import { TopListComponent } from './components/songs/top-list/top-list.component';
+import { FestivalsComponent } from './components/news/festivals/festivals.component';
 
 const routes: Routes = [
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'forum', component: ForumComponent },
   { path: 'top-list', component: TopListComponent },
   { path: 'add-song', component: AddSongComponent },
+  { path: 'festivals', component: FestivalsComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 

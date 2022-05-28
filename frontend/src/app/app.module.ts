@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegistrationComponent } from './components/auth/registration/registration.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'; 
@@ -37,12 +37,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component'; 
 import { HttpRequestInterceptor } from './interceptors/HttpRequestInterceptor';
 import { MenuComponent } from './components/menu/menu.component';
-import { MusicComponent } from './components/music/music.component';
-import { SongComponent } from './components/song/song.component';
+import { MusicComponent } from './components/songs/music/music.component';
 import { ForumComponent } from './components/forum/forum.component';
-import { TopListComponent } from './components/top-list/top-list.component';
-import { AddSongComponent } from './components/add-song/add-song.component';
-import { ViewSongComponent } from './components/view-song/view-song.component';
+import { TopListComponent } from './components/songs/top-list/top-list.component';
+import { AddSongComponent } from './components/songs/add-song/add-song.component';
+import { ViewSongComponent } from './components/songs/view-song/view-song.component';
+import { FestivalsComponent } from './components/news/festivals/festivals.component';
+import { NewsCardComponent } from './components/news/news-card/news-card.component';
+import { AddNewsComponent } from './components/news/add-news/add-news.component';
+import { FestivalCardComponent } from './components/news/festival-card/festival-card.component';
+import { SongCardComponent } from './components/songs/song-card/song-card.component';
 
 @NgModule({
   declarations: [
@@ -52,12 +56,16 @@ import { ViewSongComponent } from './components/view-song/view-song.component';
     HomeComponent,
     MenuComponent,
     MusicComponent,
-    SongComponent,
     MusicComponent,
     ForumComponent,
     TopListComponent,
     AddSongComponent,
     ViewSongComponent,
+    FestivalsComponent,
+    FestivalCardComponent,
+    AddNewsComponent,
+    NewsCardComponent,
+    SongCardComponent,
     
   ],
   imports: [
