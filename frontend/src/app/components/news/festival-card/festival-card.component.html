@@ -1,9 +1,9 @@
-<mat-card class="song" style="display: grid; grid-template-columns: 50% 50%;">
+<mat-card class="card" style="display: grid; grid-template-columns: 70% 30%; width: 50%;">
     <div>
         <mat-card-title>{{festival.name}}</mat-card-title>
-        <mat-card-subtitle>
-            {{this.festival.startDate}} - {{this.festival.endDate}}
-        </mat-card-subtitle>
+        <br>
+        Start:  &nbsp;{{this.festival.startDate | date:'medium'}} <br>
+        End:    &nbsp;&nbsp;&nbsp;{{this.festival.endDate | date:'medium'}}
         <mat-card-actions>
             <button mat-button  (click)="openDialog()">Open</button>
         </mat-card-actions>
@@ -13,5 +13,4 @@
             <img class="image" src="data:image/jpeg;base64,{{festival.coverPhoto}}">
         </div>
     </div>
-
 </mat-card>

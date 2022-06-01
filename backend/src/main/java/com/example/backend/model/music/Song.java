@@ -1,5 +1,6 @@
 package com.example.backend.model.music;
 
+import com.example.backend.model.File;
 import com.example.backend.model.auth.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,16 +42,17 @@ public class Song {
     @ManyToMany
     private List<Singer> singers;
 
-    @Lob
-    @Column
-    private byte[] audio;
+    @ManyToOne
+    @JoinColumn(name = "album_cover_id")
+    private File albumCover;
 
-    @Lob
-    @Column
-    private byte[] video;
+    @ManyToOne
+    @JoinColumn(name = "audio_id")
+    private File audio;
 
-    @Lob
-    @Column
-    private byte[] albumCover;
+    @ManyToOne
+    @JoinColumn(name = "video_id")
+    private File video;
+
 
 }

@@ -47,6 +47,9 @@ import { NewsCardComponent } from './components/news/news-card/news-card.compone
 import { AddNewsComponent } from './components/news/add-news/add-news.component';
 import { FestivalCardComponent } from './components/news/festival-card/festival-card.component';
 import { SongCardComponent } from './components/songs/song-card/song-card.component';
+import { ViewFestivalComponent } from './components/news/view-festival/view-festival.component';
+import { ViewNewsComponent } from './components/news/view-news/view-news.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,8 @@ import { SongCardComponent } from './components/songs/song-card/song-card.compon
     AddNewsComponent,
     NewsCardComponent,
     SongCardComponent,
+    ViewFestivalComponent,
+    ViewNewsComponent,
     
   ],
   imports: [
@@ -94,7 +99,8 @@ import { SongCardComponent } from './components/songs/song-card/song-card.compon
     MatIconModule,
     MatDialogModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgbModule
     // MatList
   ],
   providers: [

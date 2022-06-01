@@ -1,12 +1,16 @@
+<mat-spinner class="loading" *ngIf="loading" [mode]="'indeterminate'"></mat-spinner>
 
-<div class="container">
-<mat-card class="account-container rcorners2" >
-     <mat-card-title>The person of the month:</mat-card-title>
-     <br>
-     <br>
-     <mat-card-content>
-         <h1> {{person.name}} {{person.surname}} <i>{{person.email}}</i></h1>
-     </mat-card-content>
-   </mat-card>
+<div class="container" *ngIf="!loading">
+  <mat-card class="account-container rcorners2">
+    <mat-card-content>
+      <h3><b>The person of the month:&#09; &thinsp;</b> {{person.name}} {{person.surname}} <i>{{person.email}}</i></h3>
+    </mat-card-content>
+  </mat-card>
+  <br><br>
+  <button *ngIf="adminLogged()" mat-raised-button class="accent-color" (click)="openAddDialog()"> Add news</button>
+  <br><br>
+  <div style="display: grid; grid-template-columns: 50% 50%;">
+    <app-news-card *ngFor="let news of newsList" [news]="news" class="card">
+    </app-news-card>
+  </div>
 </div>
-

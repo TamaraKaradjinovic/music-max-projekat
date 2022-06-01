@@ -1,5 +1,6 @@
 package com.example.backend.model.news;
 
+import com.example.backend.model.File;
 import com.example.backend.model.auth.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,8 +18,9 @@ import java.util.Set;
 @Entity
 @Table(name = "festival")
 public class Festival {
+
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -33,9 +35,10 @@ public class Festival {
     @Column
     private Date endDate;
 
-    @Lob
-    @Column
-    private byte[] coverPhoto;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cover_photo_id")
+    private File coverPhoto;
 
     @OneToMany(mappedBy = "festival" )
     private Set<Comment> comments;

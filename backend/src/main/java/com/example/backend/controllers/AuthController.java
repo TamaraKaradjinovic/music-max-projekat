@@ -41,8 +41,9 @@ public class AuthController {
         if (user == null)
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
-        response.addCookie(authService.login(dto.getEmail(), dto.getPassword())[0]);
-        response.addCookie(authService.login(dto.getEmail(), dto.getPassword())[1]);
+        Cookie[] cookies = authService.login(dto.getEmail(), dto.getPassword());
+        response.addCookie(cookies[0]);
+        response.addCookie(cookies[1]);
 
         return ResponseEntity.ok().build();
     }

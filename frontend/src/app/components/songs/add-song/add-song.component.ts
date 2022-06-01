@@ -89,7 +89,7 @@ export class AddSongComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.model.audio = e.target.result
-      this.model.audio = this.model.audio!.slice(23)
+      this.model.audio = this.model.audio!.slice(22)
     };
     reader.readAsDataURL(event.target.files[0]);
     console.log(this.model);
@@ -99,7 +99,7 @@ export class AddSongComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.model.video = e.target.result
-      this.model.video = this.model.video!.slice(24)
+      this.model.video = this.model.video!.slice(22)
     };
     reader.readAsDataURL(event.target.files[0]);
     console.log(this.model);

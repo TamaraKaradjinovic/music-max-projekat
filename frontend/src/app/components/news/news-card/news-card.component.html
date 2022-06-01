@@ -1,1 +1,18 @@
-<p>news-card works!</p>
+<mat-card class="card" style="display: grid; grid-template-columns: 50% 50%; height: 100%;">
+    <div>
+        <mat-card-title>{{news.title}}</mat-card-title>
+        <mat-card-content>
+            {{news.content}}
+        </mat-card-content>
+        <mat-card-actions>
+             <button mat-button  (click)="openDialog()">Open</button>
+        </mat-card-actions>
+    </div> <br><br><br>
+    <div class="image">
+        <div class="wrapper">
+            <div id="one">
+                <img class="image" width="50%" src="data:image/jpeg;base64,{{cover}}">
+            </div>
+        </div>
+    </div>
+</mat-card>

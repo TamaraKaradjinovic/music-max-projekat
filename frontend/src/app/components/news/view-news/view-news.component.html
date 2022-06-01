@@ -1,0 +1,45 @@
+<h2> {{news.title}} </h2>
+<br><br>
+<p>
+    {{news.content}}
+</p>
+<br><br>
+
+<div *ngIf="news.photos != []">
+    <mat-divider></mat-divider>
+    <br><br>
+    <h3> Gallery: </h3>
+
+    <div class="content-section implementation carousel-demo" width="70%">
+        <div class="card" width="70%">
+            <ngb-carousel [showNavigationArrows]="true" [showNavigationIndicators]="true">
+                <ng-template ngbSlide *ngFor="let image of news.photos">
+                  <div class="img-wrapper">
+                    <img class="image" width="100%" src="data:image/jpeg;base64,{{image}}">
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+        </div>
+    </div>
+
+    <br><br>
+</div>
+
+
+<div *ngIf="news.audio != null">
+    <mat-divider></mat-divider>
+    <br><br>
+    <h3> Listen: </h3>
+    <audio controls style="width: 100%;" controls src="data:audio/mp3;base64,{{news.video}}">
+        Your browser does not support the audio tag.
+    </audio>
+    <br><br>
+</div>
+
+<div *ngIf="news.video != null">
+    <mat-divider></mat-divider>
+    <br><br>
+    <h3> Watch music video: </h3>
+    <video width="100%" controls src="data:video/mp4;base64,{{news.audio}}">
+    </video>
+</div>

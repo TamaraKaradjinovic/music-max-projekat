@@ -1,0 +1,34 @@
+<h2> {{festival.name}} </h2>
+<br>
+<br>
+
+&nbsp;Start: &nbsp;&nbsp; {{festival.startDate | date:'medium'}} <br>
+&nbsp;End: &nbsp;&nbsp; {{festival.endDate | date:'medium'}}
+
+<br><br><br>
+<p>
+  {{festival.description}}
+</p>
+<br><br>
+
+
+
+<div *ngIf="guestLogged() && isPast()">
+  <h4><i>Comments:</i></h4>
+  <div *ngFor="let comment of comments">
+    <!--    {{comment.text}} ,  {{comment.user}},  {{comment.date}}-->
+    {{comment | json}}
+  </div>
+
+  <br><br>
+
+  <form (ngSubmit)=addComment()>
+    <mat-form-field appearance="fill" color="accent-color" class="field-half">
+      <mat-label>Leave a comment:</mat-label>
+      <input matInput [(ngModel)]="comment" name="comment">
+    </mat-form-field><br>
+
+    <button mat-raised-button type="submit" class="accent-color"> Add </button>
+
+  </form>
+</div>

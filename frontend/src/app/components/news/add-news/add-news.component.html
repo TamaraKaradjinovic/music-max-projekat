@@ -1,1 +1,92 @@
-<p>add-news works!</p>
+<mat-card class="container">
+    <mat-card-title> Add News: </mat-card-title><br>
+    <mat-card-content>
+      <form class="new">
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter title</mat-label>
+          <input matInput placeholder="Gossip" [(ngModel)]="model.title" name="title" required>
+        </mat-form-field>
+        &nbsp;
+                
+        <mat-form-field appearance="standard">
+          <mat-label>Enter content</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"[(ngModel)]="model.content" name="content" required></textarea>
+        </mat-form-field>
+        
+       
+        &nbsp;
+           
+  
+        <div class="file-input">
+          <label class="custom-file-upload"> Select photos: </label>&nbsp;
+          <input type="file" multiple accept="image/*" (change)="imageFileChange($event)" />
+        </div>
+  
+        <br>
+  
+        <div class="file-input">
+          <label class="custom-file-upload"> Select audio: </label>&nbsp;
+          <input type="file" accept="audio/*" (change)="audioFileChange($event)">
+        </div>
+  
+        <br>
+  
+        <div class="file-input">
+          <label class="custom-file-upload"> Select video: </label>
+          <input type="file" accept="video/*" (change)="videoFileChange($event)" />
+        </div>
+
+        <mat-checkbox [(ngModel)]="isFestival" name="isFestival">
+          Is is about a festival?
+        </mat-checkbox>
+
+        <div *ngIf="isFestival">
+          <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter name</mat-label>
+          <input matInput placeholder="Gossip" [(ngModel)]="festival.name" name="name" required>
+        </mat-form-field>
+        &nbsp;
+                
+        <mat-form-field appearance="standard">
+          <mat-label>Enter description</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"[(ngModel)]="festival.description" name="description" required></textarea>
+        </mat-form-field>
+
+        <br><br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date" [(ngModel)]="festival.startDate" name="startDate">
+            <input matEndDate placeholder="End date" [(ngModel)]="festival.endDate" name="endDate">
+          </mat-date-range-input>
+          <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        </div>
+
+
+        
+  
+      <!-- </mat-list> -->
+      
+        <br><br>
+  
+        <button mat-flat-button color="primary" class="confirm" (click)="addNews()">
+          Confirm
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>

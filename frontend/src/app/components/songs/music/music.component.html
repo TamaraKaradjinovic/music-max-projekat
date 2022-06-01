@@ -58,6 +58,7 @@
     <mat-card *ngIf="!emptySongs()" class="songs-container"
         style="display: grid; grid-template-columns: 25% 25% 25% 25%;">
         <div class="card-content" *ngFor="let song of songs; index as i" style="margin: 20px auto;">
+            {{song.name}}
             <app-song-card [song]="song"></app-song-card>
         </div>
     </mat-card>

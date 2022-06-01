@@ -1,11 +1,11 @@
-.container {
-    margin: 100px;
-}
+
 
 .rcorners2 {
     border-radius: 30px;
     border: 1px solid #f1f10b;
     padding: 30px;
-    width: 350px;
-    height: 170px;
   }
+
+.card {
+    margin: 10px;;
+}

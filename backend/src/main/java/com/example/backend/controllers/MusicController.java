@@ -100,6 +100,8 @@ public class MusicController {
     @GetMapping("/diligent-account")
     public AccountDto getDiligentUser() {
         Account acc = authService.findAccountByUserId(musicService.getDiligentUserId());
+        if(acc == null)
+            return null;
         return new AccountDto(acc.getUser().getEmail(), acc.getName(), acc.getSurname());
     }
 

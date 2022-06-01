@@ -3,6 +3,7 @@ package com.example.backend.mappers;
 import com.example.backend.dtos.SongBasicDto;
 import com.example.backend.dtos.SongDto;
 import com.example.backend.dtos.SongDtoPost;
+import com.example.backend.model.File;
 import com.example.backend.model.auth.User;
 import com.example.backend.model.music.*;
 import com.example.backend.repositories.AuthorRepository;
@@ -43,7 +44,7 @@ public class SongMapper {
                 avg,
                 song.getGenre().getName(),
                 singers,
-                song.getAlbumCover()
+                song.getAlbumCover().getFile()
         );
     }
 
@@ -73,9 +74,9 @@ public class SongMapper {
                 song.getUser().getEmail(),
                 authors,
                 singers,
-                song.getAudio(),
-                song.getVideo(),
-                song.getAlbumCover()
+                song.getAudio().getFile(),
+                song.getVideo().getFile(),
+                song.getAlbumCover().getFile()
         );
     }
 
@@ -87,12 +88,20 @@ public class SongMapper {
 
         Song newSong = new Song();
 
+        File audio = new File();
+        File video = new File();
+        File photo = new File();
+        audio.setFile(dto.getAudio());
+        video.setFile(dto.getVideo());
+        photo.setFile(dto.getAlbumCover());
+
+
         newSong.setName(dto.getName());
         newSong.setYear(dto.getYear());
         newSong.setRates(new ArrayList<>());
-        newSong.setAudio(dto.getAudio());
-        newSong.setVideo(dto.getVideo());
-        newSong.setAlbumCover(dto.getAlbumCover());
+        newSong.setAudio(audio);
+        newSong.setVideo(video);
+        newSong.setAlbumCover(photo);
 
         newSong.setGenre(genre);
         newSong.setSingers(singers);

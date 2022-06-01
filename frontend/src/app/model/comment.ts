@@ -1,4 +1,5 @@
 export interface Comment {
     user: string
-    content: string
+    text: string
+    date: Date
 }

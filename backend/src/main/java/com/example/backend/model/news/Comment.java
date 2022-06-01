@@ -16,8 +16,9 @@ import java.util.Date;
 @Entity
 @Table(name = "comment")
 public class Comment {
+
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
